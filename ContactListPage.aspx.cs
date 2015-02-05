@@ -31,4 +31,31 @@ public partial class ContactListPage : System.Web.UI.Page
         }
 
     }
+    protected void btnRemoveCustomer_Click(object sender, EventArgs e)
+    {
+        if (this.contactList.Count > 0)
+        {
+            if (this.lbCustomerContacts.SelectedIndex > -1)
+            {
+                this.contactList.RemoveAt(this.lbCustomerContacts.SelectedIndex);
+                this.DisplayContacts();
+            }
+            else
+            {
+                
+            }
+        }
+    }
+    protected void btnSelectCustomers_Click(object sender, EventArgs e)
+    {
+        this.Response.Redirect("CustomerListPage.aspx");
+    }
+    protected void btnClearList_Click(object sender, EventArgs e)
+    {
+        if (this.contactList.Count < 0)
+            return;
+        this.contactList.Clear();
+        this.lbCustomerContacts.Items.Clear();
+        
+    }
 }

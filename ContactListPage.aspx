@@ -18,9 +18,9 @@
         <asp:Label ID="lblCustomerList" runat="server" Text="Customer Contact List"></asp:Label>
         <asp:ListBox ID="lbCustomerContacts" runat="server"></asp:ListBox>
         <p>
-            <asp:Button ID="btnSelectCustomers" runat="server" Text="Select Additional Customers" Width="182px" />
-            <asp:Button ID="btnRemoveCustomer" runat="server" Text="Remove Customer" Width="130px" />
-            <asp:Button ID="btnClearList" runat="server" Text="Clear List" />
+            <asp:Button ID="btnSelectCustomers" runat="server" OnClick="btnSelectCustomers_Click" Text="Select Additional Customers" Width="182px" />
+            <asp:Button ID="btnRemoveCustomer" runat="server" OnClick="btnRemoveCustomer_Click" Text="Remove Customer" Width="130px" />
+            <asp:Button ID="btnClearList" runat="server" OnClick="btnClearList_Click" Text="Clear List" />
         </p>
     </form>
 </body>
