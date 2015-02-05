@@ -48,8 +48,8 @@
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         </p>
         <p>
-            <asp:Button ID="btnViewContacts" runat="server" Text="View Contact List" />
-            <asp:Button ID="btnAddContacts" runat="server" Text="Add to Contacts" />
+            <asp:Button ID="btnViewContacts" runat="server" OnClick="btnViewContacts_Click" Text="View Contact List" />
+            <asp:Button ID="btnAddContacts" runat="server" OnClick="btnAddContacts_Click" Text="Add to Contacts" />
         </p>
     </form>
 </body>

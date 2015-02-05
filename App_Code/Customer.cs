@@ -25,4 +25,19 @@ public class Customer
     public string Zipcode { get; set; }
     public string Phone { get; set; }
     public string Email { get; set; }
+
+    public string Display()
+    {
+        string output = string.Format("{0}: {1}; {2} ", this.splitString(this.Name),this.Phone,this.Email);
+        return output;
+    }
+
+    private string splitString(string name)
+    {
+        
+        string[] names = name.Split(' ');
+
+        return names[1] + ", " + names[0];
+
+    }
 }

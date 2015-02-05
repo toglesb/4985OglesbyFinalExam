@@ -45,4 +45,20 @@ public partial class CustomerPage : System.Web.UI.Page
 
         return cust;
     }
+    protected void btnAddContacts_Click(object sender, EventArgs e)
+    {
+        CustomerList custList = CustomerList.GetCustomers();
+        Customer cust = custList[this.selectedCustomer.CustomerId];
+
+        if (cust == null)
+        {
+            custList.AddItem(this.selectedCustomer);
+        }
+
+
+    }
+    protected void btnViewContacts_Click(object sender, EventArgs e)
+    {
+        this.Response.Redirect("ContactListPage.aspx");
+    }
 }
