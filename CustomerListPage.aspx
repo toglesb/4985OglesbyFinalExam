@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerPage.aspx.cs" Inherits="CustomerPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerListPage.aspx.cs" Inherits="CustomerPage" %>
 
 <!DOCTYPE html>
 
@@ -46,6 +46,10 @@
         <p>
             <asp:Label ID="lblEmail" runat="server" Text="Email :"></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnViewContacts" runat="server" Text="View Contact List" />
+            <asp:Button ID="btnAddContacts" runat="server" Text="Add to Contacts" />
         </p>
     </form>
 </body>
