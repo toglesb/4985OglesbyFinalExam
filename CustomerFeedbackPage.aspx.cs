@@ -27,20 +27,22 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnSubmitFeedback_Click(object sender, EventArgs e)
     {
-
+        Description desc = new Description();
+        desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
+        
     }
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
+        this.txtAdditionalComments.Text = this.lbFeedback.Items.Count.ToString();
         if (this.lbFeedback.Items.Count > 0)
         {
-            
+            Feedback fb = new Feedback();
+            //fb.SoftwareID = lbFeedback.;
+
         }
             
         
     }
 
-    //private void enableAllControls(Control p,)
-    //{
-        
-   // }
+
 }

@@ -17,14 +17,14 @@
         <h3>
             Managing Ballgames with Technology</h3>
         <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID: " CssClass="label"></asp:Label>
-        <asp:TextBox ID="txtCustomerID" runat="server" AutoPostBack="True" ValidationGroup="Customer"></asp:TextBox>
+        <asp:TextBox ID="txtCustomerID" runat="server">1002</asp:TextBox>
         <asp:Button ID="btnConfirmID" runat="server" Text="Search ID" ValidationGroup="Customer" OnClick="btnConfirmID_Click" />
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCustomerID" Display="Dynamic" ErrorMessage="Must enter Customer ID" ValidationGroup="Customer"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCustomerID" Display="Dynamic" ErrorMessage="Must enter Customer ID"></asp:RequiredFieldValidator>
         <asp:CompareValidator ID="cvCustomerID" runat="server" ControlToValidate="txtCustomerID" ErrorMessage="CompareValidator"></asp:CompareValidator>
         
         
         <p>
-        <asp:ListBox ID="lbFeedback" runat="server" ValidationGroup="Customer" DataSourceID="FeedbackData" DataTextField="FeedbackID" DataValueField="FeedbackID" AutoPostBack="True" CssClass="ddl"></asp:ListBox>
+        <asp:ListBox ID="lbFeedback" runat="server" DataSourceID="FeedbackData" DataTextField="FeedbackID" DataValueField="FeedbackID" AutoPostBack="True" CssClass="ddl"></asp:ListBox>
                 <asp:SqlDataSource ID="FeedbackData" runat="server" ConnectionString="<%$ ConnectionStrings:FeedbackConnection %>" ProviderName="<%$ ConnectionStrings:FeedbackConnection.ProviderName %>" SelectCommand="SELECT * FROM [Feedback] WHERE ([CustomerID] = ?)">
          <SelectParameters>
              <asp:ControlParameter ControlID="txtCustomerID" Name="CustomerID" PropertyName="Text" Type="Int32" />
