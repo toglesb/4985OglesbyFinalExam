@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,7 +18,7 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.lbFeedback.Items.Clear();
+        
     }
     /// <summary>
     /// Handles the Click event of the btnSubmitFeedback control.
@@ -28,4 +29,18 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     {
 
     }
+    protected void btnConfirmID_Click(object sender, EventArgs e)
+    {
+        if (this.lbFeedback.Items.Count > 0)
+        {
+            
+        }
+            
+        
+    }
+
+    //private void enableAllControls(Control p,)
+    //{
+        
+   // }
 }
