@@ -8,6 +8,9 @@ using System.Web;
 /// </summary>
 public class Feedback
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Feedback"/> class.
+    /// </summary>
 	public Feedback()
 	{
 		//
@@ -24,6 +27,10 @@ public class Feedback
     public String Title { get; set; }
     public String Description { get; set; }
 
+    /// <summary>
+    /// Formats the feedback.
+    /// </summary>
+    /// <returns></returns>
     public String FormatFeedback()
     {
         return "Feedback for software " + this.SoftwareID + " closed " + this.DateClosed + " (" + this.Title + ")";

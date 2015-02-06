@@ -7,10 +7,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/// <summary>
+/// 
+/// </summary>
 public partial class CustomerPage : System.Web.UI.Page
 {
     private Customer selectedCustomer;
 
+    /// <summary>
+    /// Handles the Load event of the Page control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!this.IsPostBack)
@@ -28,6 +36,10 @@ public partial class CustomerPage : System.Web.UI.Page
         this.txtEmail.Text = this.selectedCustomer.Email;
     }
 
+    /// <summary>
+    /// Gets the selected customer.
+    /// </summary>
+    /// <returns></returns>
     private Customer getSelectedCustomer()
     {
         var customerTable = (DataView) this.CustomersData.Select(DataSourceSelectArguments.Empty);
@@ -45,6 +57,11 @@ public partial class CustomerPage : System.Web.UI.Page
 
         return cust;
     }
+    /// <summary>
+    /// Handles the Click event of the btnAddContacts control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnAddContacts_Click(object sender, EventArgs e)
     {
         CustomerList custList = CustomerList.GetCustomers();
@@ -57,6 +74,11 @@ public partial class CustomerPage : System.Web.UI.Page
 
 
     }
+    /// <summary>
+    /// Handles the Click event of the btnViewContacts control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnViewContacts_Click(object sender, EventArgs e)
     {
         this.Response.Redirect("ContactListPage.aspx");

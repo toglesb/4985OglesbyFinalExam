@@ -1,0 +1,27 @@
+﻿body {
+    background-color: #393939;
+
+}
+h1 {
+   color:#FF5A09;
+}
+
+h3 {
+    color: whitesmoke;
+}
+.text {
+    width: 14em;
+}
+.label {
+    font-weight: bold;
+    color: #ff9900;
+    float: left;
+    width: 10em;
+}
+.button {
+    background-color: #ff5a09;
+    margin-top: 1em;
+    padding: .25em .5em;
+    width: 11em;
+}
+

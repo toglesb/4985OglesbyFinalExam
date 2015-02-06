@@ -8,11 +8,12 @@ using System.Web;
 /// </summary>
 public class Description
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Description"/> class.
+    /// </summary>
 	public Description()
 	{
-		//
-		// TODO: Add constructor logic here
-		//
+		
 	}
 
     public int CustomerID { get; set; }
