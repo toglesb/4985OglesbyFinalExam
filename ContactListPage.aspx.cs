@@ -6,8 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 /// <summary>
-/// 
+/// Code file for ContactListPage
 /// </summary>
+/// <author>
+/// TJ Oglesby
+/// </author>
+/// <version>
+/// 2/5/15
+/// </version>
 public partial class ContactListPage : System.Web.UI.Page
 {
     private CustomerList contactList;

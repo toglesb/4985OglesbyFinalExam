@@ -6,6 +6,12 @@ using System.Web;
 /// <summary>
 /// Summary description for Description
 /// </summary>
+///  <author>
+/// TJ Oglesby
+/// </author>
+/// <version>
+/// 2/5/15
+/// </version>
 public class Description
 {
     /// <summary>

@@ -7,6 +7,12 @@ using System.Web;
 /// <summary>
 /// Summary description for CustomerList
 /// </summary>
+///  <author>
+/// TJ Oglesby
+/// </author>
+/// <version>
+/// 2/5/15
+/// </version>
 public class CustomerList
 {
     private List<Customer> _customerList;
@@ -26,7 +32,7 @@ public class CustomerList
     /// The <see cref="Customer"/>.
     /// </value>
     /// <param name="index">The index.</param>
-    /// <returns></returns>
+    /// <returns>Customer object found at selected index</returns>
     public Customer this[int index]
     {
         get { return this._customerList[index]; }
@@ -40,7 +46,7 @@ public class CustomerList
     /// The <see cref="Customer"/>.
     /// </value>
     /// <param name="name">The name.</param>
-    /// <returns></returns>
+    /// <returns>Customer that has selected name</returns>
     public Customer this[String name]
     {
         get { return this._customerList.FirstOrDefault(c => c.CustomerId == name); }
@@ -86,7 +92,7 @@ public class CustomerList
     /// <summary>
     /// Gets the customers.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>CustomerList object </returns>
     public static CustomerList GetCustomers()
     {
         CustomerList custList = (CustomerList) HttpContext.Current.Session["CustomerList"];

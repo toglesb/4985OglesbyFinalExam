@@ -6,6 +6,12 @@ using System.Web;
 /// <summary>
 /// Summary description for Customer
 /// </summary>
+/// <author>
+/// TJ Oglesby
+/// </author>
+/// <version>
+/// 2/5/15
+/// </version>
 public class Customer
 {
 
@@ -30,7 +36,7 @@ public class Customer
     /// <summary>
     /// Displays this instance.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>output to be displayed</returns>
     public string Display()
     {
         string output = string.Format("{0}: {1}; {2} ", this.splitString(this.Name),this.Phone,this.Email);
@@ -41,7 +47,7 @@ public class Customer
     /// Splits the string.
     /// </summary>
     /// <param name="name">The name.</param>
-    /// <returns></returns>
+    /// <returns>format in which string is to be displayed after being split</returns>
     private string splitString(string name)
     {
         

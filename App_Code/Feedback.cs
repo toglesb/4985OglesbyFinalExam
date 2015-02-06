@@ -6,6 +6,12 @@ using System.Web;
 /// <summary>
 /// Summary description for Feedback
 /// </summary>
+///  <author>
+/// TJ Oglesby
+/// </author>
+/// <version>
+/// 2/5/15
+/// </version>
 public class Feedback
 {
     /// <summary>
@@ -30,7 +36,7 @@ public class Feedback
     /// <summary>
     /// Formats the feedback.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Format for which string is to be displayed</returns>
     public String FormatFeedback()
     {
         return "Feedback for software " + this.SoftwareID + " closed " + this.DateClosed + " (" + this.Title + ")";

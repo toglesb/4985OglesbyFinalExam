@@ -7,8 +7,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 /// <summary>
-/// 
+/// Page that displays items needed to complete customer feedback
 /// </summary>
+/// /// <author>
+/// TJ Oglesby
+/// </author>
+/// <version>
+/// 2/5/15
+/// </version>
 public partial class CustomerFeedbackPage : System.Web.UI.Page
 {
     /// <summary>
@@ -31,6 +37,11 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
         desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
         
     }
+    /// <summary>
+    /// Handles the Click event of the btnConfirmID control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
         this.txtAdditionalComments.Text = this.lbFeedback.Items.Count.ToString();

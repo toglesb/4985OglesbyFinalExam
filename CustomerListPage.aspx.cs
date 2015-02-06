@@ -8,8 +8,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 /// <summary>
-/// 
+/// Code file for the CustomerPage
 /// </summary>
+/// <author>
+/// TJ Oglesby
+/// </author>
+/// <version>
+/// 2/5/15
+/// </version>
 public partial class CustomerPage : System.Web.UI.Page
 {
     private Customer selectedCustomer;
