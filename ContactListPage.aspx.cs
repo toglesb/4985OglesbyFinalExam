@@ -47,6 +47,8 @@ public partial class ContactListPage : System.Web.UI.Page
             this.lbCustomerContacts.Items.Add(this.contactList[i].Display());
         }
 
+
+
     }
     /// <summary>
     /// Handles the Click event of the btnRemoveCustomer control.

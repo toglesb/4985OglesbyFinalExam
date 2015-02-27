@@ -24,7 +24,7 @@
         
         
         <p>
-        <asp:ListBox ID="lbFeedback" runat="server" DataSourceID="FeedbackData" DataTextField="FeedbackID" DataValueField="FeedbackID" AutoPostBack="True" CssClass="ddl"></asp:ListBox>
+        <asp:ListBox ID="lbFeedback" runat="server" AutoPostBack="True" CssClass="ddl"></asp:ListBox>
                 <asp:SqlDataSource ID="FeedbackData" runat="server" ConnectionString="<%$ ConnectionStrings:FeedbackConnection %>" ProviderName="<%$ ConnectionStrings:FeedbackConnection.ProviderName %>" SelectCommand="SELECT * FROM [Feedback] WHERE ([CustomerID] = ?)">
          <SelectParameters>
              <asp:ControlParameter ControlID="txtCustomerID" Name="CustomerID" PropertyName="Text" Type="Int32" />

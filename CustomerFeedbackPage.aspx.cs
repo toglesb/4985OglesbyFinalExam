@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -45,14 +46,38 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
         this.txtAdditionalComments.Text = this.lbFeedback.Items.Count.ToString();
+        Feedback fb = this.getSelectedFeedback();
+        this.lbFeedback.Text = fb.FormatFeedback();
         if (this.lbFeedback.Items.Count > 0)
         {
-            Feedback fb = new Feedback();
-            //fb.SoftwareID = lbFeedback.;
+            
 
         }
             
         
+    }
+
+    private Feedback getSelectedFeedback()
+    {
+        var feedbackTable = (DataView) this.FeedbackData.Select(DataSourceSelectArguments.Empty);
+        var feedback = new Feedback();
+        if (feedbackTable != null)
+        {
+        
+        feedbackTable.RowFilter = "CustomerID = '" + Convert.ToInt32(this.txtCustomerID.Text) + "'";
+        var row = (DataRowView) feedbackTable[0];
+
+        feedback.FeedbackID = row["FeedbackID"].ToString();
+        feedback.CustomerID = row["CustomerID"].ToString();
+        feedback.SoftwareID = row["SoftwareID"].ToString();
+        feedback.SupportID = row["SupportID"].ToString();
+        feedback.DateOpened = row["DateOpened"].ToString();
+        feedback.DateClosed = row["DateClosed"].ToString();
+        feedback.Title = row["Title"].ToString();
+        feedback.Description = row["Description"].ToString();
+         }   
+
+          return feedback;
     }
 
 

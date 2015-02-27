@@ -70,6 +70,7 @@ public class CustomerList
     public void AddItem(Customer newCustomer)
     {
         this._customerList.Add(newCustomer);
+        this._customerList.OrderBy(n => n.Name);
     }
 
     /// <summary>

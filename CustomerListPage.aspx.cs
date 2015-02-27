@@ -76,6 +76,11 @@ public partial class CustomerPage : System.Web.UI.Page
         if (cust == null)
         {
             custList.AddItem(this.selectedCustomer);
+            lblError.Text = "";
+        }
+        else
+        {
+            lblError.Text = "Customer name already contained in contact list";
         }
 
 
