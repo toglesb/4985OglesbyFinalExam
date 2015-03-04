@@ -69,8 +69,9 @@ public class CustomerList
     /// <param name="newCustomer">The new customer.</param>
     public void AddItem(Customer newCustomer)
     {
+        
         this._customerList.Add(newCustomer);
-        this._customerList.OrderBy(n => n.Name);
+        this.sortList();
     }
 
     /// <summary>
@@ -80,6 +81,7 @@ public class CustomerList
     public void RemoveAt(int index)
     {
         this._customerList.RemoveAt(index);
+        this.sortList();
     }
 
     /// <summary>
@@ -102,5 +104,18 @@ public class CustomerList
             HttpContext.Current.Session["CustomerList"] = new CustomerList();
         }
         return (CustomerList) HttpContext.Current.Session["CustomerList"];
+    }
+
+    private void sortList()
+    {
+        var sortedList = this._customerList.OrderBy(cust => this.lastNameString(cust.Name)).ToList();
+        this._customerList = sortedList;
+    }
+
+    private string lastNameString(string name)
+    {
+        string [] names = name.Split(' ');
+
+        return names[1];       
     }
 }

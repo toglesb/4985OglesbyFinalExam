@@ -13,6 +13,9 @@ h3 {
     width: 14em;
     color: #ff5a09;
 }
+.error {
+    color: red;
+}
 .label {
     font-weight: bold;
     color: #ff9900;
@@ -30,5 +33,4 @@ h3 {
     
 }
 .ddl {
-    width: 30em;
 }

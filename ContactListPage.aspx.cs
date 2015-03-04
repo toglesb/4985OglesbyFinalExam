@@ -40,6 +40,7 @@ public partial class ContactListPage : System.Web.UI.Page
     /// </summary>
     private void DisplayContacts()
     {
+        
         this.lbCustomerContacts.Items.Clear();
 
         for (int i = 0; i < this.contactList.Count; i++)

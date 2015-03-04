@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerListPage.aspx.cs" Inherits="CustomerPage" %>
 
 <!DOCTYPE html>
-<link href="Styles/Style.css" rel="stylesheet" />
+<link href="Styles/Main.css" rel="stylesheet" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>TJ Oglesby Customer Page</title>
@@ -17,7 +17,7 @@
             Managing Ballgames with Technology</h3>
         <p>
             
-            <asp:Label ID="lblError" runat="server"></asp:Label>
+            <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
             
         </p>
         <asp:Label ID="lblSelectCustomer" runat="server" Text="Select Customer :" CssClass="label"></asp:Label>

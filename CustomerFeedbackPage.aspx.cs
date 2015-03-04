@@ -25,7 +25,7 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        this.activateControls(false);
     }
     /// <summary>
     /// Handles the Click event of the btnSubmitFeedback control.
@@ -35,7 +35,8 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     protected void btnSubmitFeedback_Click(object sender, EventArgs e)
     {
         Description desc = new Description();
-        desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
+       // desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
+        this.activateControls(true);
         
     }
     /// <summary>
@@ -46,8 +47,8 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
         this.txtAdditionalComments.Text = this.lbFeedback.Items.Count.ToString();
-        Feedback fb = this.getSelectedFeedback();
-        this.lbFeedback.Text = fb.FormatFeedback();
+        List<Feedback> fb = this.getSelectedFeedback();
+        this.lbFeedback.Items.Add(fb[0].FormatFeedback());
         if (this.lbFeedback.Items.Count > 0)
         {
             
@@ -57,14 +58,16 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
         
     }
 
-    private Feedback getSelectedFeedback()
+    private List<Feedback> getSelectedFeedback()
     {
         var feedbackTable = (DataView) this.FeedbackData.Select(DataSourceSelectArguments.Empty);
-        var feedback = new Feedback();
+        
+        List<Feedback> feedbackList = new List<Feedback>();
         if (feedbackTable != null)
         {
-        
-        feedbackTable.RowFilter = "CustomerID = '" + Convert.ToInt32(this.txtCustomerID.Text) + "'";
+        var feedback = new Feedback();
+        Response.Write(feedbackTable.Count);
+        feedbackTable.RowFilter = "CustomerID = '" + Convert.ToInt32(this.txtCustomerID.Text) + "'" + " AND DateClosed <> 'NULL'";
         var row = (DataRowView) feedbackTable[0];
 
         feedback.FeedbackID = row["FeedbackID"].ToString();
@@ -75,9 +78,24 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
         feedback.DateClosed = row["DateClosed"].ToString();
         feedback.Title = row["Title"].ToString();
         feedback.Description = row["Description"].ToString();
+        feedbackList.Add(feedback);
          }   
 
-          return feedback;
+          return feedbackList;
+    }
+
+    private void activateControls(bool value)
+    {
+        this.cbContacted.Enabled = value;
+        this.rbServiceDissatisfied.Enabled = value;
+        this.rbServiceNeither.Enabled = value;
+        this.rbServiceSatisfied.Enabled = value;
+        this.rbProbDissatisfied.Enabled = value;
+        this.rbProbNeither.Enabled = value;
+        this.rbProbSatisfied.Enabled = value;
+        this.rbTechDissatisfied.Enabled = value;
+        this.rbTechNeither.Enabled = value;
+        this.rbTechSatisfied.Enabled = value;
     }
 
 
