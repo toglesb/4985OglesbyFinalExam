@@ -18,6 +18,8 @@ using System.Web.UI.WebControls;
 /// </version>
 public partial class CustomerFeedbackPage : System.Web.UI.Page
 {
+    private List<Feedback> fb; 
+
     /// <summary>
     /// Handles the Load event of the Page control.
     /// </summary>
@@ -35,8 +37,20 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     protected void btnSubmitFeedback_Click(object sender, EventArgs e)
     {
         Description desc = new Description();
-        
-        
+        desc.FeedbackID = 0;
+        desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
+        desc.ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value);
+        desc.Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value);
+        desc.Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value);
+        desc.Comments = this.txtAdditionalComments.Text;
+        desc.Contact = this.cbContacted.Checked;
+        desc.ContactMethod = this.rblContact.SelectedItem.Text;
+
+        HttpContext.Current.Session["Contact"] = this.cbContacted.Checked;
+        this.Response.Redirect("FeedbackComplete.aspx");
+
+
+
     }
     /// <summary>
     /// Handles the Click event of the btnConfirmID control.
@@ -46,7 +60,7 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
         
-        List<Feedback> fb = this.getSelectedFeedback();
+        this.fb = this.getSelectedFeedback();
         this.lbFeedback.Items.Clear();
 
         foreach (Feedback f in fb)
@@ -99,19 +113,13 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     private void activateControls(bool value)
     {
         this.cbContacted.Enabled = value;
-        this.rbServiceDissatisfied.Enabled = value;
-        this.rbServiceNeither.Enabled = value;
-        this.rbServiceSatisfied.Enabled = value;
-        this.rbProbDissatisfied.Enabled = value;
-        this.rbProbNeither.Enabled = value;
-        this.rbProbSatisfied.Enabled = value;
-        this.rbTechDissatisfied.Enabled = value;
-        this.rbTechNeither.Enabled = value;
-        this.rbTechSatisfied.Enabled = value;
+        this.rblProbResolution.Enabled = value;
+        this.rblServiceTime.Enabled = value;
+        this.rblTechEfficiency.Enabled = value;
         this.txtAdditionalComments.Enabled = value;
-        this.rbEmail.Enabled = value;
-        this.rbPhone.Enabled = value;
+        this.rblContact.Enabled = value;
     }
+
 
 
 

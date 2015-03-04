@@ -31,20 +31,27 @@
 </asp:SqlDataSource>
         </p>
         <asp:Label ID="lblServiceTime" runat="server" Text="Service Time:" CssClass="label"></asp:Label>
-        <asp:RadioButton ID="rbServiceSatisfied" runat="server" Checked="True" GroupName="Service" Text="Satisfied" Enabled="False" />
-        <asp:RadioButton ID="rbServiceNeither" runat="server" GroupName="Service" Text="Neither Satisfied Nor Dissatisfied" Enabled="False" />
-        <asp:RadioButton ID="rbServiceDissatisfied" runat="server" GroupName="Service" Text="Dissatisfied" Enabled="False" />
+                    <asp:RadioButtonList ID="rblServiceTime" runat="server" RepeatDirection="Horizontal" Height="16px" >
+                <asp:ListItem Value="1" Selected="True">Satisfied</asp:ListItem>
+                <asp:ListItem Value="2">Neither Satisfied Nor Dissatisfied</asp:ListItem>
+                <asp:ListItem Value="3">Dissatisfied</asp:ListItem>
+            </asp:RadioButtonList>
+
         <p>
             <asp:Label ID="lblTechEfficiency" runat="server" Text="Technical efficiency:" CssClass="label"></asp:Label>
-            <asp:RadioButton ID="rbTechSatisfied" runat="server" Checked="True" GroupName="Tech" Text="Satisfied" Enabled="False" />
-            <asp:RadioButton ID="rbTechNeither" runat="server" GroupName="Tech" Text="Neither Satisfied Nor Dissatisfied" Enabled="False" />
-            <asp:RadioButton ID="rbTechDissatisfied" runat="server" GroupName="Tech" Text="Dissatisfied" Enabled="False" />
+                        <asp:RadioButtonList ID="rblTechEfficiency" runat="server" RepeatDirection="Horizontal">
+                <asp:ListItem Value="1" Selected="True">Satisfied</asp:ListItem>
+                <asp:ListItem Value="2">Neither Satisfied Nor Dissatisfied</asp:ListItem>
+                <asp:ListItem Value="3">Dissatisfied</asp:ListItem>
+            </asp:RadioButtonList>
         </p>
         <p>
             <asp:Label ID="txtProbResolution" runat="server" Text="Problem resolution:" CssClass="label"></asp:Label>
-            <asp:RadioButton ID="rbProbSatisfied" runat="server" Checked="True" GroupName="Problem" Text="Satisfied" Enabled="False" />
-            <asp:RadioButton ID="rbProbNeither" runat="server" GroupName="Problem" Text="Neither Satisfied Nor Dissatisfied" Enabled="False" />
-            <asp:RadioButton ID="rbProbDissatisfied" runat="server" GroupName="Problem" Text="Dissatisfied" Enabled="False" />
+            <asp:RadioButtonList ID="rblProbResolution" runat="server" RepeatDirection="Horizontal">
+                <asp:ListItem Value="1" Selected="True">Satisfied</asp:ListItem>
+                <asp:ListItem Value="2">Neither Satisfied Nor Dissatisfied</asp:ListItem>
+                <asp:ListItem Value="3">Dissatisfied</asp:ListItem>
+            </asp:RadioButtonList>
         </p>
         <p>
         <asp:Label ID="lblAdditonalComments" runat="server" BorderStyle="None" Text="Additional Comments:" CssClass="label"></asp:Label>
@@ -56,8 +63,10 @@
         </p>
         <p>
         <asp:Label ID="lblContactMethod" runat="server" Text="Contact Method:" CssClass="label"></asp:Label>
-        <asp:RadioButton ID="rbEmail" runat="server" Text="Email" Enabled="False" />
-        <asp:RadioButton ID="rbPhone" runat="server" Text="Telephone" Enabled="False" />
+            <asp:RadioButtonList ID="rblContact" runat="server" RepeatDirection="Horizontal">
+                <asp:ListItem>Email</asp:ListItem>
+                <asp:ListItem>Telephone</asp:ListItem>
+            </asp:RadioButtonList>
             </p>
         <p>
             <asp:Button ID="btnSubmitFeedback" runat="server" OnClick="btnSubmitFeedback_Click" Text="Submit Feedback" ValidationGroup="Feedback" CssClass="button" />
