@@ -9,6 +9,9 @@ h1 {
 h3 {
     color: whitesmoke;
 }
+p {
+    text-align: left;
+}
 .text {
     width: 14em;
     color: #ff5a09;
@@ -20,6 +23,7 @@ h3 {
     font-weight: bold;
     color: #ff9900;
     float: left;
+    text-align: left;
     width: 10em;
 }
 .button {

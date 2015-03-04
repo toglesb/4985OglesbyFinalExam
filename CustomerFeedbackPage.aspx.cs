@@ -35,8 +35,7 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     protected void btnSubmitFeedback_Click(object sender, EventArgs e)
     {
         Description desc = new Description();
-       // desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
-        this.activateControls(true);
+        
         
     }
     /// <summary>
@@ -46,15 +45,22 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
-        this.txtAdditionalComments.Text = this.lbFeedback.Items.Count.ToString();
+        
         List<Feedback> fb = this.getSelectedFeedback();
-        this.lbFeedback.Items.Add(fb[0].FormatFeedback());
+        this.lbFeedback.Items.Clear();
+
+        foreach (Feedback f in fb)
+        {
+            if (f.DateClosed != "")
+            {
+                this.lbFeedback.Items.Add(f.FormatFeedback());
+            }
+        }
         if (this.lbFeedback.Items.Count > 0)
         {
-            
-
+            this.activateControls(true);
         }
-            
+        
         
     }
 
@@ -65,23 +71,29 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
         List<Feedback> feedbackList = new List<Feedback>();
         if (feedbackTable != null)
         {
-        var feedback = new Feedback();
-        Response.Write(feedbackTable.Count);
-        feedbackTable.RowFilter = "CustomerID = '" + Convert.ToInt32(this.txtCustomerID.Text) + "'" + " AND DateClosed <> 'NULL'";
-        var row = (DataRowView) feedbackTable[0];
+            
+            Response.Write(feedbackTable.Count);
+            //    feedbackTable.RowFilter = "DateClosed <> " + DBNull.Value;
+            feedbackTable.RowFilter = "CustomerID = '" + Convert.ToInt32(this.txtCustomerID.Text) + "'";
+                // + "'" + " AND (DateClosed <> NULL)";
 
-        feedback.FeedbackID = row["FeedbackID"].ToString();
-        feedback.CustomerID = row["CustomerID"].ToString();
-        feedback.SoftwareID = row["SoftwareID"].ToString();
-        feedback.SupportID = row["SupportID"].ToString();
-        feedback.DateOpened = row["DateOpened"].ToString();
-        feedback.DateClosed = row["DateClosed"].ToString();
-        feedback.Title = row["Title"].ToString();
-        feedback.Description = row["Description"].ToString();
-        feedbackList.Add(feedback);
-         }   
 
-          return feedbackList;
+            for (int i = 0; i < feedbackTable.Count; i++)
+            {
+                var feedback = new Feedback();
+                var row = (DataRowView) feedbackTable[i];
+                feedback.FeedbackID = row["FeedbackID"].ToString();
+                feedback.CustomerID = row["CustomerID"].ToString();
+                feedback.SoftwareID = row["SoftwareID"].ToString();
+                feedback.SupportID = row["SupportID"].ToString();
+                feedback.DateOpened = row["DateOpened"].ToString();
+                feedback.DateClosed = row["DateClosed"].ToString();
+                feedback.Title = row["Title"].ToString();
+                feedback.Description = row["Description"].ToString();
+                feedbackList.Add(feedback);
+            }
+        }
+        return feedbackList;
     }
 
     private void activateControls(bool value)
@@ -96,7 +108,11 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
         this.rbTechDissatisfied.Enabled = value;
         this.rbTechNeither.Enabled = value;
         this.rbTechSatisfied.Enabled = value;
+        this.txtAdditionalComments.Enabled = value;
+        this.rbEmail.Enabled = value;
+        this.rbPhone.Enabled = value;
     }
+
 
 
 }
