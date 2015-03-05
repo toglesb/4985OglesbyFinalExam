@@ -9,9 +9,10 @@ h1 {
 h3 {
     color: whitesmoke;
 }
-p {
-    text-align: left;
+h4 {
+    color: #ff5a09;
 }
+
 .text {
     width: 14em;
     color: #ff5a09;
@@ -22,10 +23,9 @@ p {
 .label {
     font-weight: bold;
     color: #ff9900;
-    float: left;
-    text-align: left;
-    width: 10em;
-}
+    
+
+    }
 .button {
     background-color: #ff5a09;
     margin-top: 1em;
