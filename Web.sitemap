@@ -12,6 +12,6 @@
       <siteMapNode url="ContactListPage.aspx"  title="Display Contacts" description="Display Contacts"/>
     </siteMapNode>
 
-    <siteMapNode title="Site Map" description="Site Map" />
+    <siteMapNode url="SiteMapPage.aspx" title="Site Map" description="Site Map" />
   </siteMapNode>
 </siteMap>

@@ -25,7 +25,7 @@ public partial class CustomerFeedbackPage : Page
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+       
         this.activateControls(false);
     }
 
@@ -41,17 +41,21 @@ public partial class CustomerFeedbackPage : Page
             var desc = new Description()
             {
                 FeedbackID = Convert.ToInt32(this.lbFeedback.SelectedItem.Value),
-    CustomerID = Convert.ToInt32(this.txtCustomerID.Text),
-    ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value),
-    Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value),
-    Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value),
-    Comments = this.txtAdditionalComments.Text,
-    Contact = this.cbContacted.Checked,
-    ContactMethod = this.rblContact.SelectedItem.Text
+                CustomerID = Convert.ToInt32(this.txtCustomerID.Text),
+                ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value),
+                Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value),
+                Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value),
+                Comments = this.txtAdditionalComments.Text,
+                Contact = this.cbContacted.Checked,
+                ContactMethod = this.rblContact.SelectedItem.Text
             };
             HttpContext.Current.Session["Decription"] = desc;
             HttpContext.Current.Session["Contact"] = this.cbContacted.Checked;
             Response.Redirect("FeedbackComplete.aspx");
+        }
+        else
+        {
+            this.activateControls(true);
         }
     }
 

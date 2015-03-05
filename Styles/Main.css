@@ -38,9 +38,13 @@ h4 {
     
     
 }
+.tree {
+   
+    background-color: #ff5a09;
+}
 footer {
     color: chocolate;
-    float: right;
+    float: left;
 
 }
 #thankYou {
