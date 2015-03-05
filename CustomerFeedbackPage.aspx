@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerFeedbackPage.aspx.cs" Inherits="CustomerFeedbackPage" MasterPageFile="~/Site.master"%>
 
 <asp:Content  ContentPlaceHolderID = "headPlaceholder" runat="server">
-    <link href="Styles/Style.css" rel="stylesheet" />
+    <link href="Styles/Main.css" rel="stylesheet" />
 </asp:Content>
 
 

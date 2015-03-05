@@ -37,16 +37,18 @@ public partial class CustomerFeedbackPage : Page
     {
         if (this.lbFeedback.SelectedIndex != -1)
         {
-            var desc = new Description();
-            desc.FeedbackID = Convert.ToInt32(this.lbFeedback.SelectedItem.Value);
-            desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
-            desc.ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value);
-            desc.Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value);
-            desc.Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value);
-            desc.Comments = this.txtAdditionalComments.Text;
-            desc.Contact = this.cbContacted.Checked;
-            desc.ContactMethod = this.rblContact.SelectedItem.Text;
-
+            var desc = new Description()
+            {
+                FeedbackID = Convert.ToInt32(this.lbFeedback.SelectedItem.Value),
+    CustomerID = Convert.ToInt32(this.txtCustomerID.Text),
+    ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value),
+    Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value),
+    Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value),
+    Comments = this.txtAdditionalComments.Text,
+    Contact = this.cbContacted.Checked,
+    ContactMethod = this.rblContact.SelectedItem.Text
+            };
+            HttpContext.Current.Session["Decription"] = desc;
             HttpContext.Current.Session["Contact"] = this.cbContacted.Checked;
             Response.Redirect("FeedbackComplete.aspx");
         }
@@ -120,5 +122,6 @@ public partial class CustomerFeedbackPage : Page
         this.rblTechEfficiency.Enabled = value;
         this.txtAdditionalComments.Enabled = value;
         this.rblContact.Enabled = value;
+        this.btnSubmitFeedback.Enabled = value;
     }
 }

@@ -13,13 +13,7 @@ public class Customer
 {
 
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Customer"/> class.
-    /// </summary>
-	public Customer()
-	{
 
-	}
 
     public string CustomerId { get; set; }
     public string Name { get; set; }

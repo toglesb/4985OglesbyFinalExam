@@ -12,13 +12,7 @@
 /// </version>
 public class Feedback
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Feedback"/> class.
-    /// </summary>
-	public Feedback()
-	{
-
-	}
+   
 
     public String FeedbackID { get; set; }
     public String CustomerID { get; set; }

@@ -12,13 +12,7 @@
 /// </version>
 public class Description
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Description"/> class.
-    /// </summary>
-	public Description()
-	{
-		
-	}
+
 
     public int CustomerID { get; set; }
     public int FeedbackID { get; set; }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContactListPage.aspx.cs" Inherits="ContactListPage" MasterPageFile="~/Site.master"%>
 
 <asp:Content runat="server" ContentPlaceHolderID="headPlaceholder">
-    <link href="Styles/Style.css" rel="stylesheet" />
+    <link href="Styles/Main.css" rel="stylesheet" />
 </asp:Content>
  
 

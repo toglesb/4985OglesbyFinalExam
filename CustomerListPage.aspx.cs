@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Web;
+
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 /// <summary>
 /// Code file for the CustomerPage
@@ -14,9 +11,9 @@ using System.Web.UI.WebControls;
 /// TJ Oglesby
 /// </author>
 /// <version>
-/// 2/5/15
+/// 3/4/15
 /// </version>
-public partial class CustomerPage : System.Web.UI.Page
+public partial class CustomerPage : Page
 {
     private Customer selectedCustomer;
 
@@ -27,7 +24,7 @@ public partial class CustomerPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!this.IsPostBack)
+        if (!IsPostBack)
         {
             this.ddlCustomerData.DataBind();
         }
@@ -49,19 +46,26 @@ public partial class CustomerPage : System.Web.UI.Page
     private Customer getSelectedCustomer()
     {
         var customerTable = (DataView) this.CustomersData.Select(DataSourceSelectArguments.Empty);
-        customerTable.RowFilter = "CustomerID = '" + this.ddlCustomerData.SelectedValue + "'";
-        var row = (DataRowView) customerTable[0];
-        var cust = new Customer();
-        cust.CustomerId = row["CustomerID"].ToString();
-        cust.Name = row["Name"].ToString();
-        cust.Address = row["Address"].ToString();
-        cust.City = row["City"].ToString();
-        cust.State = row["State"].ToString();
-        cust.Zipcode = row["ZipCode"].ToString();
-        cust.Phone = row["Phone"].ToString();
-        cust.Email = row["Email"].ToString();
+        if (customerTable != null)
+        {
+            customerTable.RowFilter = "CustomerID = '" + this.ddlCustomerData.SelectedValue + "'";
+            var row = customerTable[0];
 
-        return cust;
+            var cust = new Customer()
+            {
+                CustomerId = row["CustomerID"].ToString(),
+                Name = row["Name"].ToString(),
+                Address = row["Address"].ToString(),
+                City = row["City"].ToString(),
+                State = row["State"].ToString(),
+                Zipcode = row["ZipCode"].ToString(),
+                Phone = row["Phone"].ToString(),
+                Email = row["Email"].ToString()
+            };
+
+            return cust;
+        }
+        return null;
     }
     /// <summary>
     /// Handles the Click event of the btnAddContacts control.
@@ -76,11 +80,11 @@ public partial class CustomerPage : System.Web.UI.Page
         if (cust == null)
         {
             custList.AddItem(this.selectedCustomer);
-            lblError.Text = "";
+            this.lblError.Text = "";
         }
         else
         {
-            lblError.Text = "Customer name already contained in contact list";
+            this.lblError.Text = "Customer name already contained in contact list";
         }
 
 
@@ -92,6 +96,6 @@ public partial class CustomerPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnViewContacts_Click(object sender, EventArgs e)
     {
-        this.Response.Redirect("ContactListPage.aspx");
+        Response.Redirect("ContactListPage.aspx");
     }
 }

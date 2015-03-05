@@ -1,15 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 public partial class FeedbackComplete : System.Web.UI.Page
 {
+
+    /// <summary>
+    /// Handles the Load event of the Page control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
-        if ((bool) HttpContext.Current.Session["Contact"] == true)
+        if ((bool) HttpContext.Current.Session["Contact"])
         {
             this.lblcontactSoon.Text =
                 " someone with be contacting you soon to discuss the information you have provided.";

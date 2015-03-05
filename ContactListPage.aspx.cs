@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 /// <summary>
 /// Code file for ContactListPage
@@ -12,7 +8,7 @@ using System.Web.UI.WebControls;
 /// TJ Oglesby
 /// </author>
 /// <version>
-/// 2/5/15
+/// 3/4/15
 /// </version>
 public partial class ContactListPage : System.Web.UI.Page
 {
@@ -27,7 +23,7 @@ public partial class ContactListPage : System.Web.UI.Page
     {
         this.contactList = CustomerList.GetCustomers();
 
-        if (!this.IsPostBack)
+        if (!IsPostBack)
         {
             this.DisplayContacts();
         }
@@ -78,7 +74,7 @@ public partial class ContactListPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnSelectCustomers_Click(object sender, EventArgs e)
     {
-        this.Response.Redirect("CustomerListPage.aspx");
+        Response.Redirect("CustomerListPage.aspx");
     }
     /// <summary>
     /// Handles the Click event of the btnClearList control.
