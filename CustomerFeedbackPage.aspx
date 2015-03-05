@@ -1,21 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerFeedbackPage.aspx.cs" Inherits="CustomerFeedbackPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerFeedbackPage.aspx.cs" Inherits="CustomerFeedbackPage" MasterPageFile="~/Site.master"%>
 
-<!DOCTYPE html>
-<link href="Styles/Style.css" rel="stylesheet" />
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content  ContentPlaceHolderID = "headPlaceholder" runat="server">
+    <link href="Styles/Style.css" rel="stylesheet" />
+</asp:Content>
 
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+
+<asp:Content ContentPlaceHolderID="formPlaceholder" runat="server">
     <div>
     
     </div>
-        <h1>
-            Digital Upscale Manager for Ballgames</h1>
-        <h3>
-            Managing Ballgames with Technology</h3>
+        
         <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID: " CssClass="label"></asp:Label>
         <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
         <asp:Button ID="btnConfirmID" runat="server" Text="Search ID" ValidationGroup="Customer" OnClick="btnConfirmID_Click" />
@@ -71,7 +65,5 @@
         <p>
             <asp:Button ID="btnSubmitFeedback" runat="server" OnClick="btnSubmitFeedback_Click" Text="Submit Feedback" ValidationGroup="Feedback" CssClass="button" />
         </p>
-        
-    </form>
-</body>
-</html>
+        </asp:Content>
+

@@ -1,23 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerListPage.aspx.cs" Inherits="CustomerPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerListPage.aspx.cs" Inherits="CustomerPage" MasterPageFile="~/Site.master"%>
+<asp:Content ContentPlaceHolderID="headPlaceholder" runat="server">
+    <link href="Styles/Main.css" rel="stylesheet" />
+</asp:Content>
 
-<!DOCTYPE html>
-<link href="Styles/Main.css" rel="stylesheet" />
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>TJ Oglesby Customer Page</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ContentPlaceHolderID="formPlaceholder" runat="server">
     <div>
     
     </div>
-        <h1>
-            Digital Upscale Manager for Ballgames</h1>
-        <h3>
-            Managing Ballgames with Technology</h3>
+
         <p>
             
-            <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
+         <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
             
         </p>
         <asp:Label ID="lblSelectCustomer" runat="server" Text="Select Customer :" CssClass="label"></asp:Label>
@@ -56,6 +49,4 @@
             <asp:Button ID="btnViewContacts" runat="server" OnClick="btnViewContacts_Click" Text="View Contact List" CssClass="button" />
             <asp:Button ID="btnAddContacts" runat="server" OnClick="btnAddContacts_Click" Text="Add to Contacts" CssClass="button" />
         </p>
-    </form>
-</body>
-</html>
+    </asp:Content>

@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<link href="Styles/Main.css" rel="stylesheet" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>TJ Oglesby Project 2</title>
+    <asp:ContentPlaceHolder id="headPlaceholder" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+                <h1>
+            Digital Upscale Manager for Ballgames</h1>
+        <h3>
+            Managing Ballgames with Technology</h3>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="formPlaceholder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+            <footer>
+        Please contact us at 88-Ballgame or email <asp:hyperlink runat="server" NavigateUrl="mailto:info@ballgame.com">info@ballgame.com</asp:hyperlink>
+    </footer>
+    </form>
+</body>
+
+</html>

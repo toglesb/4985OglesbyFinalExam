@@ -1,19 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FeedbackComplete.aspx.cs" Inherits="FeedbackComplete" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FeedbackComplete.aspx.cs" Inherits="FeedbackComplete" MasterPageFile="~/Site.master"%>
 
-<!DOCTYPE html>
+<asp:Content ContentPlaceHolderID="headPlaceholder" runat="server">
+    
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="feedbackCompleteForm" runat="server">
+<asp:Content ContentPlaceHolderID="formPlaceholder" runat="server">
     <div>
     
     </div>
         <p>
             Thank you for your feedback<asp:Label ID="lblcontactSoon" runat="server"></asp:Label>
         </p>
-    </form>
-</body>
-</html>
+</asp:Content>
