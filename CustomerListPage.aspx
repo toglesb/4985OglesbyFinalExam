@@ -14,9 +14,9 @@
             
         </p>
         <asp:Label ID="lblSelectCustomer" runat="server" Text="Select Customer :" CssClass="label"></asp:Label>
-        <asp:DropDownList ID="ddlCustomerData" runat="server" DataSourceID="CustomersData" DataTextField="Name" DataValueField="CustomerID" AutoPostBack="True" CssClass="text">
+        <asp:DropDownList ID="ddlCustomerData" runat="server" DataSourceID="CustomersData" DataTextField="Name" DataValueField="CustomerID" AutoPostBack="True">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="CustomersData" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Customer]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="CustomersData" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Customer] ORDER BY [Name]"></asp:SqlDataSource>
         <p>
             <asp:Label ID="lblName" runat="server" Text="Name :" CssClass="label"></asp:Label>
             <asp:Label ID="txtName" runat="server" CssClass="text"></asp:Label>

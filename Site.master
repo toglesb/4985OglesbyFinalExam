@@ -15,7 +15,7 @@
             Managing Ballgames with Technology</h3>
 <body>
     <form id="form1" runat="server">
-        <asp:Menu ID="navMenu" runat="server" BackColor="#B5C7DE" DataSourceID="smdsNavigation" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Orientation="Horizontal" StaticEnableDefaultPopOutImage="False" StaticSubMenuIndent="10px">
+        <asp:Menu ID="navMenu" runat="server" BackColor="#B5C7DE" DataSourceID="smdsNavigation" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Orientation="Horizontal" StaticEnableDefaultPopOutImage="False" StaticSubMenuIndent="10px" Width="200px">
             <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
             <DynamicMenuStyle BackColor="#B5C7DE" />

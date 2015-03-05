@@ -8,7 +8,7 @@
     <div>
     
     </div>
-        <p>
+        <p id="thankYou">
             Thank you for your feedback<asp:Label ID="lblcontactSoon" runat="server"></asp:Label>
         </p>
 </asp:Content>

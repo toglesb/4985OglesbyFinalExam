@@ -1,101 +1,99 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 /// <summary>
-/// Page that displays items needed to complete customer feedback
+///     Page that displays items needed to complete customer feedback
 /// </summary>
-/// /// <author>
-/// TJ Oglesby
+/// ///
+/// <author>
+///     TJ Oglesby
 /// </author>
 /// <version>
-/// 2/5/15
+///     3/4/15
 /// </version>
-public partial class CustomerFeedbackPage : System.Web.UI.Page
+public partial class CustomerFeedbackPage : Page
 {
-    private List<Feedback> fb; 
+    private List<Feedback> fb;
 
     /// <summary>
-    /// Handles the Load event of the Page control.
+    ///     Handles the Load event of the Page control.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
         this.activateControls(false);
     }
+
     /// <summary>
-    /// Handles the Click event of the btnSubmitFeedback control.
+    ///     Handles the Click event of the btnSubmitFeedback control.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected void btnSubmitFeedback_Click(object sender, EventArgs e)
     {
-        Description desc = new Description();
-        desc.FeedbackID = 0;
-        desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
-        desc.ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value);
-        desc.Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value);
-        desc.Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value);
-        desc.Comments = this.txtAdditionalComments.Text;
-        desc.Contact = this.cbContacted.Checked;
-        desc.ContactMethod = this.rblContact.SelectedItem.Text;
+        if (this.lbFeedback.SelectedIndex != -1)
+        {
+            var desc = new Description();
+            desc.FeedbackID = Convert.ToInt32(this.lbFeedback.SelectedItem.Value);
+            desc.CustomerID = Convert.ToInt32(this.txtCustomerID.Text);
+            desc.ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value);
+            desc.Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value);
+            desc.Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value);
+            desc.Comments = this.txtAdditionalComments.Text;
+            desc.Contact = this.cbContacted.Checked;
+            desc.ContactMethod = this.rblContact.SelectedItem.Text;
 
-        HttpContext.Current.Session["Contact"] = this.cbContacted.Checked;
-        this.Response.Redirect("FeedbackComplete.aspx");
-
-
-
+            HttpContext.Current.Session["Contact"] = this.cbContacted.Checked;
+            Response.Redirect("FeedbackComplete.aspx");
+        }
     }
+
     /// <summary>
-    /// Handles the Click event of the btnConfirmID control.
+    ///     Handles the Click event of the btnConfirmID control.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
-        
         this.fb = this.getSelectedFeedback();
         this.lbFeedback.Items.Clear();
 
-        foreach (Feedback f in fb)
+        for (var i = 0; i < this.fb.Count; i++)
         {
-            if (f.DateClosed != "")
+            if (this.fb[i].DateClosed != "")
             {
-                this.lbFeedback.Items.Add(f.FormatFeedback());
+                this.lbFeedback.Items.Add(this.fb[i].FormatFeedback());
+                this.lbFeedback.Items[i].Value = this.fb[i].FeedbackID;
             }
         }
         if (this.lbFeedback.Items.Count > 0)
         {
             this.activateControls(true);
         }
-        
-        
     }
 
+    /// <summary>
+    ///     Gets the selected feedback.
+    /// </summary>
+    /// <returns></returns>
     private List<Feedback> getSelectedFeedback()
     {
         var feedbackTable = (DataView) this.FeedbackData.Select(DataSourceSelectArguments.Empty);
-        
-        List<Feedback> feedbackList = new List<Feedback>();
+
+        var feedbackList = new List<Feedback>();
         if (feedbackTable != null)
         {
-            
             Response.Write(feedbackTable.Count);
-            //    feedbackTable.RowFilter = "DateClosed <> " + DBNull.Value;
             feedbackTable.RowFilter = "CustomerID = '" + Convert.ToInt32(this.txtCustomerID.Text) + "'";
-                // + "'" + " AND (DateClosed <> NULL)";
 
-
-            for (int i = 0; i < feedbackTable.Count; i++)
+            for (var i = 0; i < feedbackTable.Count; i++)
             {
                 var feedback = new Feedback();
-                var row = (DataRowView) feedbackTable[i];
+                var row = feedbackTable[i];
                 feedback.FeedbackID = row["FeedbackID"].ToString();
                 feedback.CustomerID = row["CustomerID"].ToString();
                 feedback.SoftwareID = row["SoftwareID"].ToString();
@@ -110,6 +108,10 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
         return feedbackList;
     }
 
+    /// <summary>
+    ///     Activates the controls.
+    /// </summary>
+    /// <param name="value">if set to <c>true</c> [value].</param>
     private void activateControls(bool value)
     {
         this.cbContacted.Enabled = value;
@@ -119,8 +121,4 @@ public partial class CustomerFeedbackPage : System.Web.UI.Page
         this.txtAdditionalComments.Enabled = value;
         this.rblContact.Enabled = value;
     }
-
-
-
-
 }

@@ -33,8 +33,22 @@ h4 {
     width: 11em;
 }
 .hyper {
+   
     color:#ff5a09
     
+    
 }
-.ddl {
+footer {
+    color: chocolate;
+    float: right;
+
 }
+#thankYou {
+    color: #ff9900;
+    font-weight: bold;
+   
+}
+.radioList {
+    color: #ff5a09;
+}
+
