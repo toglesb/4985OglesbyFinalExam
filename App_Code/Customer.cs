@@ -1,22 +1,14 @@
-﻿
-
-using System.Diagnostics;
-
-/// <summary>
-/// Summary description for Customer
+﻿/// <summary>
+///     Summary description for Customer
 /// </summary>
 /// <author>
-/// TJ Oglesby
+///     TJ Oglesby
 /// </author>
 /// <version>
-/// 3/4/15
+///     3/4/15
 /// </version>
 public class Customer
 {
-
-
-
-
     private string _customerId { get; set; }
     private string _name { get; set; }
     private string _address { get; set; }
@@ -26,156 +18,121 @@ public class Customer
     private string _phone { get; set; }
     private string _email { get; set; }
 
-
     /// <summary>
-    /// Gets or sets the customer identifier.
+    ///     Gets or sets the customer identifier.
     /// </summary>
     /// <value>
-    /// The customer identifier.
+    ///     The customer identifier.
     /// </value>
     public string CustomerId
     {
         get { return this._customerId; }
-        set
-        {
-
-            this._customerId = value;
-        }
+        set { this._customerId = value; }
     }
 
     /// <summary>
-    /// Gets or sets the name.
+    ///     Gets or sets the name.
     /// </summary>
     /// <value>
-    /// The name.
+    ///     The name.
     /// </value>
     public string Name
     {
         get { return this._name; }
-        set
-        {
-
-            this._name = value;
-        } 
+        set { this._name = value; }
     }
 
     /// <summary>
-    /// Gets or sets the address.
+    ///     Gets or sets the address.
     /// </summary>
     /// <value>
-    /// The address.
+    ///     The address.
     /// </value>
     public string Address
     {
         get { return this._address; }
-        set
-        {
-            
-            this._address = value;
-        }
+        set { this._address = value; }
     }
 
     /// <summary>
-    /// Gets or sets the city.
+    ///     Gets or sets the city.
     /// </summary>
     /// <value>
-    /// The city.
+    ///     The city.
     /// </value>
     public string City
     {
         get { return this._city; }
-        set
-        {
-        
-            this._city = value;
-        }
+        set { this._city = value; }
     }
 
     /// <summary>
-    /// Gets or sets the state.
+    ///     Gets or sets the state.
     /// </summary>
     /// <value>
-    /// The state.
+    ///     The state.
     /// </value>
     public string State
     {
         get { return this._state; }
-        set
-        {
-            
-            this._state = value;
-        }
+        set { this._state = value; }
     }
 
     /// <summary>
-    /// Gets or sets the zipcode.
+    ///     Gets or sets the zipcode.
     /// </summary>
     /// <value>
-    /// The zipcode.
+    ///     The zipcode.
     /// </value>
     public string Zipcode
     {
         get { return this._zipcode; }
-        set
-        {
-         
-            this._zipcode = value;
-        }
+        set { this._zipcode = value; }
     }
 
     /// <summary>
-    /// Gets or sets the phone.
+    ///     Gets or sets the phone.
     /// </summary>
     /// <value>
-    /// The phone.
+    ///     The phone.
     /// </value>
     public string Phone
     {
         get { return this._phone; }
-        set
-        {
-            
-            this._phone = value;
-        }
+        set { this._phone = value; }
     }
 
     /// <summary>
-    /// Gets or sets the email.
+    ///     Gets or sets the email.
     /// </summary>
     /// <value>
-    /// The email.
+    ///     The email.
     /// </value>
     public string Email
     {
         get { return this._email; }
-        set
-        {
-            
-            this._email = value;
-        }
+        set { this._email = value; }
     }
 
     /// <summary>
-    /// Displays this instance.
+    ///     Displays this instance.
     /// </summary>
     /// <returns>output to be displayed</returns>
     public string Display()
     {
-        string output = string.Format("{0}: {1}; {2} ", this.splitString(this.Name),this.Phone,this.Email);
+        var output = string.Format("{0}: {1}; {2} ", this.splitString(this.Name), this.Phone, this.Email);
         return output;
     }
 
     /// <summary>
-    /// Splits the string.
+    ///     Splits the string.
     /// </summary>
     /// <param name="name">The name.</param>
     /// <returns>format in which string is to be displayed after being split</returns>
     private string splitString(string name)
     {
-        
-        string[] names = name.Split(' ');
+        var names = name.Split(' ');
 
         return names[1] + ", " + names[0];
-
     }
 }
