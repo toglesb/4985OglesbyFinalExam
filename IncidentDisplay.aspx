@@ -8,10 +8,10 @@
     </asp:DropDownList>
     <br/>
     <asp:SqlDataSource ID="sdsCustomers" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT [CustomerID], [Name] FROM [Customer]"></asp:SqlDataSource>
-    <asp:DataList ID="dlIncidentDetails" runat="server" DataSourceID="sdsIncidents" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Left" RepeatDirection="Horizontal" RepeatLayout="Flow" CellPadding="4" ForeColor="#333333">
-        <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
+    <asp:DataList ID="dlIncidentDetails" runat="server" DataSourceID="sdsIncidents" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Left" RepeatDirection="Horizontal" RepeatLayout="Flow" CellPadding="4" ForeColor="green" GridLines="Both">
+        <AlternatingItemStyle BackColor="White" ForeColor="red" />
         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" BorderStyle="Solid" />
         <HeaderTemplate>
             <table>
                 <tr>
@@ -22,7 +22,7 @@
                 </tr>
             </table>
         </HeaderTemplate>
-        <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        <ItemStyle BackColor="#F7F6F3" ForeColor="white" />
         <ItemTemplate>
             <table>
                 <tr>
@@ -36,15 +36,19 @@
             
             
             <td class="col4"><asp:Label ID="lblDateClosed" runat="server" Text='<%# Eval("DateClosed") %>' /></td>
-            
-           
-            <td class="col5">&nbsp;</td>
                 </tr>
             </table>
-            <asp:Label ID="lblDescription" runat="server" Text='<%# Eval("Description") %>' />
+            <table>
+                <tr>
+                    <td class="col5"><asp:Label ID="lblDescription" runat="server" Text='<%# Eval("Description") %>' /></td>
+                </tr>
+            </table>
+
+
             <br />
         </ItemTemplate>
         <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+        <SeparatorStyle BorderStyle="Solid" />
     </asp:DataList>
     <asp:SqlDataSource ID="sdsIncidents" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT Software.Name AS SoftwareName, Support.Name AS TechName, Feedback.DateOpened, Feedback.DateClosed, Feedback.Description FROM ((Feedback INNER JOIN Support ON Feedback.SupportID = Support.SupportID) INNER JOIN Software ON Feedback.SoftwareID = Software.SoftwareID) WHERE ([CustomerID] = ?)">
         <SelectParameters>

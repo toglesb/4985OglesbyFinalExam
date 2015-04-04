@@ -1,15 +1,25 @@
 ﻿.col1 {
     width: 150px;
+    border: green;
+    border-style: solid;
 }
 .col2 {
     width: 150px;
+    border: green;
+    border-style: solid;
 }
 .col3 {
     width: 150px;
+    border: green;
+    border-style: solid;
 }
 .col4 {
     width: 150px;
+    border: green;
+    border-style: solid;
 }
 .col5 {
     width: 600px;
+    border: green;
+    border-style: solid;
 }
