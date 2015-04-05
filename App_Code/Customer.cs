@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using System.Diagnostics;
+
+/// <summary>
 ///     Summary description for Customer
 /// </summary>
 /// <author>
@@ -9,14 +11,14 @@
 /// </version>
 public class Customer
 {
-    private string _customerId { get; set; }
-    private string _name { get; set; }
-    private string _address { get; set; }
-    private string _city { get; set; }
-    private string _state { get; set; }
-    private string _zipcode { get; set; }
-    private string _phone { get; set; }
-    private string _email { get; set; }
+    private string _customerId;
+    private string _name;
+    private string _address;
+    private string _city;
+    private string _state; 
+    private string _zipcode; 
+    private string _phone; 
+    private string _email;
 
     /// <summary>
     ///     Gets or sets the customer identifier.
@@ -27,7 +29,11 @@ public class Customer
     public string CustomerId
     {
         get { return this._customerId; }
-        set { this._customerId = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid Customer ID");
+            this._customerId = value;
+        }
     }
 
     /// <summary>
@@ -39,7 +45,11 @@ public class Customer
     public string Name
     {
         get { return this._name; }
-        set { this._name = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid name");
+            this._name = value;
+        }
     }
 
     /// <summary>
@@ -51,7 +61,11 @@ public class Customer
     public string Address
     {
         get { return this._address; }
-        set { this._address = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid address");
+            this._address = value;
+        }
     }
 
     /// <summary>
@@ -63,7 +77,11 @@ public class Customer
     public string City
     {
         get { return this._city; }
-        set { this._city = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid city");
+            this._city = value;
+        }
     }
 
     /// <summary>
@@ -75,7 +93,11 @@ public class Customer
     public string State
     {
         get { return this._state; }
-        set { this._state = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid state");
+            this._state = value;
+        }
     }
 
     /// <summary>
@@ -87,7 +109,11 @@ public class Customer
     public string Zipcode
     {
         get { return this._zipcode; }
-        set { this._zipcode = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid zip code");
+            this._zipcode = value;
+        }
     }
 
     /// <summary>
@@ -99,7 +125,11 @@ public class Customer
     public string Phone
     {
         get { return this._phone; }
-        set { this._phone = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid phone number");
+            this._phone = value;
+        }
     }
 
     /// <summary>
@@ -111,7 +141,11 @@ public class Customer
     public string Email
     {
         get { return this._email; }
-        set { this._email = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid email");
+            this._email = value;
+        }
     }
 
     /// <summary>
@@ -120,7 +154,7 @@ public class Customer
     /// <returns>output to be displayed</returns>
     public string Display()
     {
-        var output = string.Format("{0}: {1}; {2} ", this.splitString(this.Name), this.Phone, this.Email);
+        var output = string.Format("{0}: {1}; {2} ", this.SplitString(this.Name), this.Phone, this.Email);
         return output;
     }
 
@@ -129,7 +163,7 @@ public class Customer
     /// </summary>
     /// <param name="name">The name.</param>
     /// <returns>format in which string is to be displayed after being split</returns>
-    private string splitString(string name)
+    private string SplitString(string name)
     {
         if (name.Contains(" "))
         {

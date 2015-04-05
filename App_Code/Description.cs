@@ -1,5 +1,7 @@
-﻿using System;
+﻿
 
+
+using System.Diagnostics;
 
 /// <summary>
 /// Summary description for Description
@@ -14,14 +16,14 @@ public class Description
 {
 
 
-    private int _customerID { get; set; }
-    private int _feedbackID { get; set; }
-    private int _serviceTime { get; set; }
-    private int _efficiency { get; set; }
-    private int _resolution { get; set; }
-    private string _comments { get; set; }
-    private bool _contact { get; set; }
-    private string _contactMethod { get; set; }
+    private int _customerId;
+    private int _feedbackId;
+    private int _serviceTime;
+    private int _efficiency;
+    private int _resolution;
+    private string _comments;
+    private bool _contact;
+    private string _contactMethod;
 
     /// <summary>
     /// Gets or sets the customer identifier.
@@ -29,10 +31,14 @@ public class Description
     /// <value>
     /// The customer identifier.
     /// </value>
-    public int CustomerID
+    public int CustomerId
     {
-        get { return this._customerID; }
-        set { this._customerID = value; }
+        get { return this._customerId; }
+        set
+        {
+
+            this._customerId = value;
+        }
     }
 
     /// <summary>
@@ -41,12 +47,13 @@ public class Description
     /// <value>
     /// The feedback identifier.
     /// </value>
-    public int FeedbackID
+    public int FeedbackId
     {
-        get { return this._feedbackID; }
+        get { return this._feedbackId; }
         set
         {
-            this._feedbackID = value; 
+
+            this._feedbackId = value; 
         }
     }
     /// <summary>
@@ -60,6 +67,7 @@ public class Description
         get { return this._serviceTime; }
         set
         {
+
             this._serviceTime = value; 
         }
     }
@@ -74,6 +82,7 @@ public class Description
         get { return this._efficiency; }
         set
         {
+
             this._efficiency = value; 
         }
     }
@@ -88,6 +97,7 @@ public class Description
         get { return this._resolution; }
         set
         {
+
             this._resolution = value; 
         }
     }
@@ -102,6 +112,7 @@ public class Description
         get { return this._comments; }
         set
         {
+            Trace.Assert(value != null, "Invalid comments");
             this._comments = value; 
         }
     }
@@ -116,6 +127,7 @@ public class Description
         get { return this._contact; }
         set
         {
+
             this._contact = value; 
         }
     }
@@ -130,6 +142,7 @@ public class Description
         get { return this._contactMethod; }
         set
         {
+            Trace.Assert(value != null, "Invalid contact method");
             this._contactMethod = value; 
         }
     }

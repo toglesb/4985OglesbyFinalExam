@@ -16,7 +16,7 @@ using System.Web.UI;
 /// </version>
 public partial class CustomerFeedbackPage : Page
 {
-    private List<Feedback> fb;
+    private List<Feedback> _fb;
 
     /// <summary>
     ///     Handles the Load event of the Page control.
@@ -26,7 +26,7 @@ public partial class CustomerFeedbackPage : Page
     protected void Page_Load(object sender, EventArgs e)
     {
        
-        this.activateControls(false);
+        this.ActivateControls(false);
     }
 
     /// <summary>
@@ -40,8 +40,8 @@ public partial class CustomerFeedbackPage : Page
         {
             var desc = new Description()
             {
-                FeedbackID = Convert.ToInt32(this.lbFeedback.SelectedItem.Value),
-                CustomerID = Convert.ToInt32(this.txtCustomerID.Text),
+                FeedbackId = Convert.ToInt32(this.lbFeedback.SelectedItem.Value),
+                CustomerId = Convert.ToInt32(this.txtCustomerID.Text),
                 ServiceTime = Convert.ToInt32(this.rblServiceTime.SelectedItem.Value),
                 Efficiency = Convert.ToInt32(this.rblTechEfficiency.SelectedItem.Value),
                 Resolution = Convert.ToInt32(this.rblProbResolution.SelectedItem.Value),
@@ -55,7 +55,7 @@ public partial class CustomerFeedbackPage : Page
         }
         else
         {
-            this.activateControls(true);
+            this.ActivateControls(true);
         }
     }
 
@@ -66,20 +66,20 @@ public partial class CustomerFeedbackPage : Page
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected void btnConfirmID_Click(object sender, EventArgs e)
     {
-        this.fb = this.getSelectedFeedback();
+        this._fb = this.GetSelectedFeedback();
         this.lbFeedback.Items.Clear();
 
-        for (var i = 0; i < this.fb.Count; i++)
+        for (var i = 0; i < this._fb.Count; i++)
         {
-            if (this.fb[i].DateClosed != "")
+            if (this._fb[i].DateClosed != "")
             {
-                this.lbFeedback.Items.Add(this.fb[i].FormatFeedback());
-                this.lbFeedback.Items[i].Value = this.fb[i].FeedbackID;
+                this.lbFeedback.Items.Add(this._fb[i].FormatFeedback());
+                this.lbFeedback.Items[i].Value = this._fb[i].FeedbackId;
             }
         }
         if (this.lbFeedback.Items.Count > 0)
         {
-            this.activateControls(true);
+            this.ActivateControls(true);
         }
     }
 
@@ -87,7 +87,7 @@ public partial class CustomerFeedbackPage : Page
     ///     Gets the selected feedback.
     /// </summary>
     /// <returns></returns>
-    private List<Feedback> getSelectedFeedback()
+    private List<Feedback> GetSelectedFeedback()
     {
         var feedbackTable = (DataView) this.FeedbackData.Select(DataSourceSelectArguments.Empty);
 
@@ -101,10 +101,10 @@ public partial class CustomerFeedbackPage : Page
             {
                 var feedback = new Feedback();
                 var row = feedbackTable[i];
-                feedback.FeedbackID = row["FeedbackID"].ToString();
-                feedback.CustomerID = row["CustomerID"].ToString();
-                feedback.SoftwareID = row["SoftwareID"].ToString();
-                feedback.SupportID = row["SupportID"].ToString();
+                feedback.FeedbackId = row["FeedbackID"].ToString();
+                feedback.CustomerId = row["CustomerID"].ToString();
+                feedback.SoftwareId = row["SoftwareID"].ToString();
+                feedback.SupportId = row["SupportID"].ToString();
                 feedback.DateOpened = row["DateOpened"].ToString();
                 feedback.DateClosed = row["DateClosed"].ToString();
                 feedback.Title = row["Title"].ToString();
@@ -119,7 +119,7 @@ public partial class CustomerFeedbackPage : Page
     ///     Activates the controls.
     /// </summary>
     /// <param name="value">if set to <c>true</c> [value].</param>
-    private void activateControls(bool value)
+    private void ActivateControls(bool value)
     {
         this.cbContacted.Enabled = value;
         this.rblProbResolution.Enabled = value;

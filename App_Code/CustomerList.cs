@@ -71,7 +71,7 @@ public class CustomerList
     {
         
         this._customerList.Add(newCustomer);
-        this.sortList();
+        this.SortList();
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class CustomerList
     public void RemoveAt(int index)
     {
         this._customerList.RemoveAt(index);
-        this.sortList();
+        this.SortList();
     }
 
     /// <summary>
@@ -106,13 +106,13 @@ public class CustomerList
         return (CustomerList) HttpContext.Current.Session["CustomerList"];
     }
 
-    private void sortList()
+    private void SortList()
     {
-        var sortedList = this._customerList.OrderBy(cust => this.lastNameString(cust.Name)).ToList();
+        var sortedList = this._customerList.OrderBy(cust => this.LastNameString(cust.Name)).ToList();
         this._customerList = sortedList;
     }
 
-    private string lastNameString(string name)
+    private string LastNameString(string name)
     {
         if (name.Contains(" "))
         {

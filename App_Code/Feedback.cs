@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 
 /// <summary>
@@ -12,16 +13,16 @@
 /// </version>
 public class Feedback
 {
-   
 
-    private string _feedbackID { get; set; }
-    private string _customerID { get; set; }
-    private string _softwareID { get; set; }
-    private string _supportID { get; set; }
-    private string _dateOpened { get; set; }
-    private string _dateClosed { get; set; }
-    private string _title { get; set; }
-    private string _description { get; set; }
+
+    private string _feedbackId;
+    private string _customerId;
+    private string _softwareId;
+    private string _supportId;
+    private string _dateOpened;
+    private string _dateClosed;
+    private string _title;
+    private string _description;
 
     /// <summary>
     /// Gets or sets the feedback identifier.
@@ -29,10 +30,14 @@ public class Feedback
     /// <value>
     /// The feedback identifier.
     /// </value>
-    public string FeedbackID
+    public string FeedbackId
     {
-        get { return this._feedbackID; }
-        set { this._feedbackID = value; }
+        get { return this._feedbackId; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid feedback id");
+            this._feedbackId = value;
+        }
     }
 
     /// <summary>
@@ -41,10 +46,14 @@ public class Feedback
     /// <value>
     /// The customer identifier.
     /// </value>
-    public string CustomerID
+    public string CustomerId
     {
-        get { return this._customerID; }
-        set { this._customerID = value; }
+        get { return this._customerId; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid customer id");
+            this._customerId = value;
+        }
     }
     /// <summary>
     /// Gets or sets the software identifier.
@@ -52,10 +61,14 @@ public class Feedback
     /// <value>
     /// The software identifier.
     /// </value>
-    public string SoftwareID
+    public string SoftwareId
     {
-        private get { return this._softwareID; }
-        set { this._softwareID = value; }
+        private get { return this._softwareId; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid software id");
+            this._softwareId = value;
+        }
     }
     /// <summary>
     /// Gets or sets the support identifier.
@@ -63,10 +76,14 @@ public class Feedback
     /// <value>
     /// The support identifier.
     /// </value>
-    public string SupportID
+    public string SupportId
     {
-        get { return this._supportID; }
-        set { this._supportID = value; }
+        get { return this._supportId; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid support id");
+            this._supportId = value;
+        }
     }
     /// <summary>
     /// Gets or sets the date opened.
@@ -77,7 +94,11 @@ public class Feedback
     public string DateOpened
     {
         get { return this._dateOpened; }
-        set { this._dateOpened = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid date opened");
+            this._dateOpened = value;
+        }
     }
     /// <summary>
     /// Gets or sets the date closed.
@@ -88,7 +109,11 @@ public class Feedback
     public string DateClosed
     {
         get { return this._dateClosed; }
-        set { this._dateClosed = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid date closed");
+            this._dateClosed = value;
+        }
     }
     /// <summary>
     /// Gets or sets the title.
@@ -99,7 +124,11 @@ public class Feedback
     public string Title
     {
         private get { return this._title; }
-        set { this._title = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid Title");
+            this._title = value;
+        }
     }
     /// <summary>
     /// Gets or sets the description.
@@ -110,7 +139,11 @@ public class Feedback
     public string Description
     {
         get { return this._description; }
-        set { this._description = value; }
+        set
+        {
+            Trace.Assert(value != null, "Invalid description");
+            this._description = value;
+        }
     }
 
     /// <summary>
@@ -119,6 +152,6 @@ public class Feedback
     /// <returns>Format for which string is to be displayed</returns>
     public String FormatFeedback()
     {
-        return "Feedback for software " + this.SoftwareID + " closed " + this.DateClosed + " (" + this.Title + ")";
+        return "Feedback for software " + this.SoftwareId + " closed " + this.DateClosed + " (" + this.Title + ")";
     }
 }

@@ -12,7 +12,7 @@
 /// </version>
 public partial class ContactListPage : System.Web.UI.Page
 {
-    private CustomerList contactList;
+    private CustomerList _contactList;
 
     /// <summary>
     /// Handles the Load event of the Page control.
@@ -21,7 +21,7 @@ public partial class ContactListPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.contactList = CustomerList.GetCustomers();
+        this._contactList = CustomerList.GetCustomers();
 
         if (!IsPostBack)
         {
@@ -39,9 +39,9 @@ public partial class ContactListPage : System.Web.UI.Page
         
         this.lbCustomerContacts.Items.Clear();
 
-        for (int i = 0; i < this.contactList.Count; i++)
+        for (int i = 0; i < this._contactList.Count; i++)
         {
-            this.lbCustomerContacts.Items.Add(this.contactList[i].Display());
+            this.lbCustomerContacts.Items.Add(this._contactList[i].Display());
         }
 
 
@@ -54,11 +54,11 @@ public partial class ContactListPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnRemoveCustomer_Click(object sender, EventArgs e)
     {
-        if (this.contactList.Count > 0)
+        if (this._contactList.Count > 0)
         {
             if (this.lbCustomerContacts.SelectedIndex > -1)
             {
-                this.contactList.RemoveAt(this.lbCustomerContacts.SelectedIndex);
+                this._contactList.RemoveAt(this.lbCustomerContacts.SelectedIndex);
                 this.DisplayContacts();
             }
             else
@@ -83,9 +83,9 @@ public partial class ContactListPage : System.Web.UI.Page
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     protected void btnClearList_Click(object sender, EventArgs e)
     {
-        if (this.contactList.Count < 0)
+        if (this._contactList.Count < 0)
             return;
-        this.contactList.Clear();
+        this._contactList.Clear();
         this.lbCustomerContacts.Items.Clear();
         
     }

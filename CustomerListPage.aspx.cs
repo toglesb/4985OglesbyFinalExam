@@ -15,7 +15,7 @@ using System.Web.UI;
 /// </version>
 public partial class CustomerPage : Page
 {
-    private Customer selectedCustomer;
+    private Customer _selectedCustomer;
 
     /// <summary>
     /// Handles the Load event of the Page control.
@@ -29,21 +29,21 @@ public partial class CustomerPage : Page
             this.ddlCustomerData.DataBind();
         }
 
-        this.selectedCustomer = this.getSelectedCustomer();
-        this.txtName.Text = this.selectedCustomer.Name;
-        this.txtAddress.Text = this.selectedCustomer.Address;
-        this.txtCity.Text = this.selectedCustomer.City;
-        this.txtState.Text = this.selectedCustomer.State;
-        this.txtZipCode.Text = this.selectedCustomer.Zipcode;
-        this.txtPhone.Text = this.selectedCustomer.Phone;
-        this.txtEmail.Text = this.selectedCustomer.Email;
+        this._selectedCustomer = this.GetSelectedCustomer();
+        this.txtName.Text = this._selectedCustomer.Name;
+        this.txtAddress.Text = this._selectedCustomer.Address;
+        this.txtCity.Text = this._selectedCustomer.City;
+        this.txtState.Text = this._selectedCustomer.State;
+        this.txtZipCode.Text = this._selectedCustomer.Zipcode;
+        this.txtPhone.Text = this._selectedCustomer.Phone;
+        this.txtEmail.Text = this._selectedCustomer.Email;
     }
 
     /// <summary>
     /// Gets the selected customer.
     /// </summary>
     /// <returns></returns>
-    private Customer getSelectedCustomer()
+    private Customer GetSelectedCustomer()
     {
         var customerTable = (DataView) this.CustomersData.Select(DataSourceSelectArguments.Empty);
         if (customerTable != null)
@@ -75,11 +75,11 @@ public partial class CustomerPage : Page
     protected void btnAddContacts_Click(object sender, EventArgs e)
     {
         CustomerList custList = CustomerList.GetCustomers();
-        Customer cust = custList[this.selectedCustomer.CustomerId];
+        Customer cust = custList[this._selectedCustomer.CustomerId];
 
         if (cust == null)
         {
-            custList.AddItem(this.selectedCustomer);
+            custList.AddItem(this._selectedCustomer);
             this.lblError.Text = "";
         }
         else
