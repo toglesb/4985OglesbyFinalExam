@@ -11,16 +11,56 @@ public partial class CustomerMaintenance : System.Web.UI.Page
     {
 
     }
+
     protected void dvCustomerDetail_ItemUpdated(object sender, DetailsViewUpdatedEventArgs e)
     {
+        if (e.Exception != null)
+        {
+            this.lblError.Text = "A database error has occured. Message: " + e.Exception.Message;
+            e.ExceptionHandled = true;
+            e.KeepInEditMode = true;
+        }
+        else if (e.AffectedRows == 0)
+        {
+            this.lblError.Text = "Another user may have updated that product. Please try again";
 
+        }
+        else
+        {
+            this.gvCustomerInfo.DataBind();
+        }
     }
+
     protected void dvCustomerDetail_ItemDeleted(object sender, DetailsViewDeletedEventArgs e)
     {
+        if (e.Exception != null)
+        {
+            this.lblError.Text = "A database error has occured. Message: " + e.Exception.Message;
+            e.ExceptionHandled = true;
+            
+        }
+        else if (e.AffectedRows == 0)
+        {
+            this.lblError.Text = "Another user may have updated that product. Please try again";
 
+        }
+        else
+        {
+            this.gvCustomerInfo.DataBind();
+        }
     }
-    protected void dvCustomerDetail_ItemInserting(object sender, DetailsViewInsertEventArgs e)
-    {
 
+    protected void dvCustomerDetail_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+    {
+        if (e.Exception != null)
+        {
+            this.lblError.Text = "A database error has occured. Message: " + e.Exception.Message;
+            e.ExceptionHandled = true;
+            e.KeepInInsertMode = true;
+        }
+        else
+        {
+            this.gvCustomerInfo.DataBind();
+        }
     }
 }
