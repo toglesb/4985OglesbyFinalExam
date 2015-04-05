@@ -5,17 +5,39 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceholder" Runat="Server">
     <br />
     <asp:SqlDataSource ID="sdsCustomers" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT [Name], [City], [State] FROM [Customer] ORDER BY [Name]"></asp:SqlDataSource>
-    <asp:GridView ID="gvCustomerInfo" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Name" DataSourceID="sdsCustomers" PageSize="6" SelectedIndex="0">
+    <asp:GridView ID="gvCustomerInfo" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Name" DataSourceID="sdsCustomers" PageSize="6" SelectedIndex="0" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
-            <asp:BoundField DataField="State" HeaderText="State" SortExpression="State" />
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" >
+            <HeaderStyle HorizontalAlign="Left" />
+            <ItemStyle HorizontalAlign="Left" Width="140px" />
+            </asp:BoundField>
+            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" >
+            <HeaderStyle HorizontalAlign="Left" />
+            <ItemStyle HorizontalAlign="Left" Width="100px" />
+            </asp:BoundField>
+            <asp:BoundField DataField="State" HeaderText="State" SortExpression="State" >
+            <HeaderStyle HorizontalAlign="Left" />
+            <ItemStyle HorizontalAlign="Left" Width="100px" />
+            </asp:BoundField>
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#ff5a09" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+        <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
     <br />
     <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
-    <asp:DetailsView ID="dvCustomerDetail" runat="server" AutoGenerateRows="False" DataKeyNames="CustomerID" DataSourceID="sdsCustomerDetails" Height="50px" OnItemDeleted="dvCustomerDetail_ItemDeleted" OnItemInserted="dvCustomerDetail_ItemInserted" OnItemUpdated="dvCustomerDetail_ItemUpdated" Width="125px">
+    <asp:DetailsView ID="dvCustomerDetail" runat="server" AutoGenerateRows="False" DataKeyNames="CustomerID" DataSourceID="sdsCustomerDetails" Height="50px" OnItemDeleted="dvCustomerDetail_ItemDeleted" OnItemInserted="dvCustomerDetail_ItemInserted" OnItemUpdated="dvCustomerDetail_ItemUpdated" Width="125px" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
+        <CommandRowStyle BackColor="#FF5A09" Font-Bold="True" />
+        <FieldHeaderStyle BackColor="#FFCC66" Font-Bold="True" />
         <Fields>
             <asp:TemplateField HeaderText="CustomerID" SortExpression="CustomerID">
                 <EditItemTemplate>
@@ -28,6 +50,7 @@
                 <ItemTemplate>
                     <asp:Label ID="Label8" runat="server" Text='<%# Bind("CustomerID") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle Width="140px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Name" SortExpression="Name">
                 <EditItemTemplate>
@@ -41,6 +64,7 @@
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle Width="140px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Address" SortExpression="Address">
                 <EditItemTemplate>
@@ -54,6 +78,7 @@
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Address") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle Width="140px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="City" SortExpression="City">
                 <EditItemTemplate>
@@ -67,6 +92,7 @@
                 <ItemTemplate>
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("City") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle Width="140px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="State" SortExpression="State">
                 <EditItemTemplate>
@@ -80,6 +106,7 @@
                 <ItemTemplate>
                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("State") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle Width="140px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ZipCode" SortExpression="ZipCode">
                 <EditItemTemplate>
@@ -93,6 +120,7 @@
                 <ItemTemplate>
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("ZipCode") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle Width="140px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Phone" SortExpression="Phone">
                 <EditItemTemplate>
@@ -106,6 +134,7 @@
                 <ItemTemplate>
                     <asp:Label ID="Label6" runat="server" Text='<%# Bind("Phone") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle Width="140px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Email" SortExpression="Email">
                 <EditItemTemplate>
@@ -122,6 +151,10 @@
             </asp:TemplateField>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
         </Fields>
+        <FooterStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#33333" />
     </asp:DetailsView>
     <asp:SqlDataSource ID="sdsCustomerDetails" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" DeleteCommand="DELETE FROM [Customer] WHERE [CustomerID] = ?" InsertCommand="INSERT INTO [Customer] ([CustomerID], [Name], [Address], [City], [State], [ZipCode], [Phone], [Email]) VALUES (@CustomerID, @Name, @Address, @City, @State, @ZipCode, @Phone, @Email)" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Customer] WHERE ([Name] = ?)" UpdateCommand="UPDATE [Customer] SET [Name] = ?, [Address] = ?, [City] = ?, [State] = ?, [ZipCode] = ?, [Phone] = ?, [Email] = ? WHERE [CustomerID] = ?">
         <DeleteParameters>

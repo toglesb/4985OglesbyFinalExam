@@ -8,7 +8,8 @@
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="SoftwareID" HeaderText="SoftwareID" ReadOnly="True" SortExpression="SoftwareID" >
-            <ItemStyle HorizontalAlign="Left" Width="100px" />
+            <HeaderStyle HorizontalAlign="Left" />
+            <ItemStyle HorizontalAlign="Left" Width="160px" />
             </asp:BoundField>
             <asp:TemplateField HeaderText="Name" SortExpression="Name">
                 <EditItemTemplate>
@@ -18,7 +19,8 @@
                 <ItemTemplate>
                     <asp:Label ID="lblName" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                 </ItemTemplate>
-                <ItemStyle HorizontalAlign="Left" Width="100px" />
+                <HeaderStyle HorizontalAlign="Left" />
+                <ItemStyle HorizontalAlign="Left" Width="160px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Version" SortExpression="Version">
                 <EditItemTemplate>
@@ -28,6 +30,7 @@
                 <ItemTemplate>
                     <asp:Label ID="lblVersion" runat="server" Text='<%# Bind("Version") %>'></asp:Label>
                 </ItemTemplate>
+                <HeaderStyle HorizontalAlign="Left" />
                 <ItemStyle HorizontalAlign="Left" Width="100px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ReleaseDate" SortExpression="ReleaseDate">
@@ -38,7 +41,8 @@
                 <ItemTemplate>
                     <asp:Label ID="lblReleaseDate" runat="server" Text='<%# Bind("ReleaseDate") %>'></asp:Label>
                 </ItemTemplate>
-                <ItemStyle HorizontalAlign="Left" Width="100px" />
+                <HeaderStyle HorizontalAlign="Left" />
+                <ItemStyle HorizontalAlign="Left" Width="160px" />
             </asp:TemplateField>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
         </Columns>
