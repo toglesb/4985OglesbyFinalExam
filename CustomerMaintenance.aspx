@@ -70,11 +70,11 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="State" SortExpression="State">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sdsStates" DataTextField="StateName" DataValueField="StateCode">
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sdsStates" DataTextField="StateName" DataValueField="StateCode" SelectedValue='<%#Bind("State") %>'>
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:DropDownList ID="ddlStateCode" runat="server" DataSourceID="sdsStates" DataTextField="StateCode" DataValueField="StateCode">
+                    <asp:DropDownList ID="ddlStateCode" runat="server" DataSourceID="sdsStates" DataTextField="StateCode" DataValueField="StateCode" SelectedValue='<%#Bind("State") %>'>
                     </asp:DropDownList>
                 </InsertItemTemplate>
                 <ItemTemplate>
