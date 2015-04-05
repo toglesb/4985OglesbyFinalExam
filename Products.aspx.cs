@@ -9,7 +9,7 @@ public partial class Products : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        this.lblError.Text = "";
     }
     protected void btnAddSoftware_Click(object sender, EventArgs e)
     {
@@ -25,6 +25,7 @@ public partial class Products : System.Web.UI.Page
             this.txtSoftwareName.Text = "";
             this.txtVersion.Text = "";
             this.txtReleaseDate.Text = "";
+
         }
         catch (Exception ex)
         {
@@ -42,6 +43,7 @@ public partial class Products : System.Web.UI.Page
             this.lblError.Text = "A database error has occured.  Message: " + e.Exception.Message;
             e.ExceptionHandled = true;
             e.KeepInEditMode = true;
+
         }
         else if (e.AffectedRows == 0)
         {
@@ -54,6 +56,7 @@ public partial class Products : System.Web.UI.Page
         {
             this.lblError.Text = "A database error has occured. Message: " + e.Exception.Message;
             e.ExceptionHandled = true;
+            this.lblError.Text = "";
         }
         else if (e.AffectedRows == 0)
         {

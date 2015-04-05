@@ -9,7 +9,7 @@ public partial class CustomerMaintenance : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        this.lblError.Text = "";
     }
 
     protected void dvCustomerDetail_ItemUpdated(object sender, DetailsViewUpdatedEventArgs e)

@@ -10,7 +10,7 @@
             <asp:TemplateField HeaderText="Name" SortExpression="Name">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtSoftwareName" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvSoftwareName" runat="server" ControlToValidate="txtSoftwareName">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvSoftwareName" runat="server" ControlToValidate="txtSoftwareName" CssClass="error" Display="Dynamic" ErrorMessage="Software name is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
@@ -19,7 +19,7 @@
             <asp:TemplateField HeaderText="Version" SortExpression="Version">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtSoftwareVersion" runat="server" Text='<%# Bind("Version") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvSoftwareVersion" runat="server" ControlToValidate="txtSoftwareVersion">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvSoftwareVersion" runat="server" ControlToValidate="txtSoftwareVersion" CssClass="error" Display="Dynamic" ErrorMessage="Software Version is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Version") %>'></asp:Label>
@@ -28,7 +28,7 @@
             <asp:TemplateField HeaderText="ReleaseDate" SortExpression="ReleaseDate">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtReleaseDate" runat="server" Text='<%# Bind("ReleaseDate") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvSoftwareReleaseDate" runat="server" ControlToValidate="txtReleaseDate">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvSoftwareReleaseDate" runat="server" ControlToValidate="txtReleaseDate" CssClass="error" Display="Dynamic" ErrorMessage="Software release date is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("ReleaseDate") %>'></asp:Label>
@@ -37,7 +37,12 @@
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
         </Columns>
     </asp:GridView>
-    <asp:Label ID="lblError" runat="server"></asp:Label>
+    <asp:ValidationSummary ID="vsSoftwareInfo" runat="server" CssClass="error" HeaderText="Please correct the following errors:" />
+    <br />
+    <br />
+    <br />
+    <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
+    <br />
     <asp:SqlDataSource ID="sdsProducts" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" DeleteCommand="DELETE FROM [Software] WHERE [SoftwareID] = ? AND [Name] = ? AND [Version] = ? AND [ReleaseDate] = ?" InsertCommand="INSERT INTO [Software] ([SoftwareID], [Name], [Version], [ReleaseDate]) VALUES (?, ?, ?, ?)" OldValuesParameterFormatString="original_{0}" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Software] ORDER BY [SoftwareID]" UpdateCommand="UPDATE [Software] SET [Name] = ?, [Version] = ?, [ReleaseDate] = ? WHERE [SoftwareID] = ? AND [Name] = ? AND [Version] = ? AND [ReleaseDate] = ?">
         <DeleteParameters>
             <asp:Parameter Name="original_SoftwareID" Type="String" />
@@ -61,24 +66,25 @@
             <asp:Parameter Name="original_ReleaseDate" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <br />
     <asp:Label ID="lblSoftwareID" runat="server" Text="Software ID : "></asp:Label>
     <asp:TextBox ID="txtSoftwareID" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvSoftwareIdInsert" runat="server" ControlToValidate="txtSoftwareID" ValidationGroup="Insert">*</asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvSoftwareIdInsert" runat="server" ControlToValidate="txtSoftwareID" CssClass="error" ErrorMessage="Software ID is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lblSoftwareName" runat="server" Text="Software Name : "></asp:Label>
     <asp:TextBox ID="txtSoftwareName" runat="server" Height="22px"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvSoftwareNameInsert" runat="server" ControlToValidate="txtSoftwareName" ValidationGroup="Insert">*</asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvSoftwareNameInsert" runat="server" ControlToValidate="txtSoftwareName" CssClass="error" ErrorMessage="Software name is required" ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lblVersion" runat="server" Text="Version : "></asp:Label>
     <asp:TextBox ID="txtVersion" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvVersionInsert" runat="server" ControlToValidate="txtVersion" ValidationGroup="Insert">*</asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvVersionInsert" runat="server" ControlToValidate="txtVersion" CssClass="error" ErrorMessage="Software version is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lblReleaseDate" runat="server" Text="Release Date : "></asp:Label>
     <asp:TextBox ID="txtReleaseDate" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvReleaseDateInsert" runat="server" ControlToValidate="txtReleaseDate" ValidationGroup="Insert">*</asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvReleaseDateInsert" runat="server" ControlToValidate="txtReleaseDate" CssClass="error" ErrorMessage="Software release date is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <br />
     <asp:Button ID="btnAddSoftware" runat="server" OnClick="btnAddSoftware_Click" Text="Add New Software" ValidationGroup="Insert" />
-    <asp:ValidationSummary ID="vsInsertErrors" runat="server" HeaderText="Please correct the following errors:" ValidationGroup="Insert" />
+    <asp:ValidationSummary ID="vsInsertErrors" runat="server" CssClass="error" HeaderText="Please correct the following errors:" ValidationGroup="Insert" />
 </asp:Content>
 

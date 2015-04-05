@@ -14,7 +14,7 @@
         </Columns>
     </asp:GridView>
     <br />
-    <asp:Label ID="lblError" runat="server"></asp:Label>
+    <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
     <asp:DetailsView ID="dvCustomerDetail" runat="server" AutoGenerateRows="False" DataKeyNames="CustomerID" DataSourceID="sdsCustomerDetails" Height="50px" OnItemDeleted="dvCustomerDetail_ItemDeleted" OnItemInserted="dvCustomerDetail_ItemInserted" OnItemUpdated="dvCustomerDetail_ItemUpdated" Width="125px">
         <Fields>
             <asp:TemplateField HeaderText="CustomerID" SortExpression="CustomerID">
@@ -22,8 +22,8 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("CustomerID") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerID" runat="server" ControlToValidate="txtCustomerID">*</asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtCustomerID" runat="server" Text = '<%# Bind("CustomerID") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvCustomerID" runat="server" ControlToValidate="txtCustomerID" CssClass="error" Display="Dynamic" ErrorMessage="Customer ID is required.">*</asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label8" runat="server" Text='<%# Bind("CustomerID") %>'></asp:Label>
@@ -32,11 +32,11 @@
             <asp:TemplateField HeaderText="Name" SortExpression="Name">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtCustomerName" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerName" runat="server" ControlToValidate="txtCustomerName">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerName" runat="server" ControlToValidate="txtCustomerName" CssClass="error" ErrorMessage="Customer name is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtCustomerName" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerName" runat="server" ControlToValidate="txtCustomerName">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerName" runat="server" ControlToValidate="txtCustomerName" CssClass="error" ErrorMessage="Customer name is required.">*</asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
@@ -45,11 +45,11 @@
             <asp:TemplateField HeaderText="Address" SortExpression="Address">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtCustomerAddress" runat="server" Text='<%# Bind("Address") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerAddress" runat="server" ControlToValidate="txtCustomerAddress">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerAddress" runat="server" ControlToValidate="txtCustomerAddress" CssClass="error" ErrorMessage="Customer address is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtCustomerAddress" runat="server" Text='<%# Bind("Address") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerAddress" runat="server" ControlToValidate="txtCustomerAddress">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerAddress" runat="server" ControlToValidate="txtCustomerAddress" CssClass="error" ErrorMessage="Customer address is required.">*</asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Address") %>'></asp:Label>
@@ -58,11 +58,11 @@
             <asp:TemplateField HeaderText="City" SortExpression="City">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtCustomerCity" runat="server" Text='<%# Bind("City") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerCity" runat="server" ControlToValidate="txtCustomerCity">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerCity" runat="server" ControlToValidate="txtCustomerCity" CssClass="error" ErrorMessage="Customer city is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtCustomerCity" runat="server" Text='<%# Bind("City") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerCity" runat="server" ControlToValidate="txtCustomerCity">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerCity" runat="server" ControlToValidate="txtCustomerCity" CssClass="error" ErrorMessage="Customer city is required.">*</asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("City") %>'></asp:Label>
@@ -70,11 +70,11 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="State" SortExpression="State">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sdsStates" DataTextField="StateName" DataValueField="StateCode" SelectedValue='<%#Bind("State") %>'>
+                    <asp:DropDownList ID="ddlStates" runat="server" DataSourceID="sdsStates" DataTextField="StateName" DataValueField="StateCode" SelectedValue='<%#Bind("State") %>'>
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:DropDownList ID="ddlStateCode" runat="server" DataSourceID="sdsStates" DataTextField="StateCode" DataValueField="StateCode" SelectedValue='<%#Bind("State") %>'>
+                    <asp:DropDownList ID="ddlStateCode" runat="server" DataSourceID="sdsStates" DataTextField="StateName" DataValueField="StateCode" SelectedValue='<%#Bind("State") %>'>
                     </asp:DropDownList>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -84,11 +84,11 @@
             <asp:TemplateField HeaderText="ZipCode" SortExpression="ZipCode">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtCustomerZipCode" runat="server" Text='<%# Bind("ZipCode") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerZipCode" runat="server" ControlToValidate="txtCustomerZipCode">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerZipCode" runat="server" ControlToValidate="txtCustomerZipCode" CssClass="error" ErrorMessage="Customer zip code is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtCustomerZipCode" runat="server" Text='<%# Bind("ZipCode") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerZipCode" runat="server" ControlToValidate="txtCustomerZipCode">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerZipCode" runat="server" ControlToValidate="txtCustomerZipCode" CssClass="error" ErrorMessage="Customer zip code is required.">*</asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("ZipCode") %>'></asp:Label>
@@ -97,11 +97,11 @@
             <asp:TemplateField HeaderText="Phone" SortExpression="Phone">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtCustomerPhone" runat="server" Text='<%# Bind("Phone") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerPhone" runat="server" ControlToValidate="txtCustomerPhone">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerPhone" runat="server" ControlToValidate="txtCustomerPhone" CssClass="error" ErrorMessage="Customer phone number is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtCustomerPhone" runat="server" Text='<%# Bind("Phone") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerPhone" runat="server" ControlToValidate="txtCustomerPhone">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerPhone" runat="server" ControlToValidate="txtCustomerPhone" CssClass="error" ErrorMessage="Customer phone number is required.">*</asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label6" runat="server" Text='<%# Bind("Phone") %>'></asp:Label>
@@ -110,11 +110,11 @@
             <asp:TemplateField HeaderText="Email" SortExpression="Email">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtCustomerDetail" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerEmail" runat="server" ControlToValidate="txtCustomerDetail">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerEmail" runat="server" ControlToValidate="txtCustomerDetail" CssClass="error" ErrorMessage="Customer email is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="txtCustomerEmail" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCustomerEmail" runat="server" ControlToValidate="txtCustomerEmail">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCustomerEmail" runat="server" ControlToValidate="txtCustomerEmail" CssClass="error" ErrorMessage="Customer email is required.">*</asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label7" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
@@ -123,7 +123,7 @@
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
         </Fields>
     </asp:DetailsView>
-    <asp:SqlDataSource ID="sdsCustomerDetails" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" DeleteCommand="DELETE FROM [Customer] WHERE [CustomerID] = ?" InsertCommand="INSERT INTO [Customer] ([CustomerID], [Name], [Address], [City], [State], [ZipCode], [Phone], [Email]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Customer] WHERE ([Name] = ?)" UpdateCommand="UPDATE [Customer] SET [Name] = ?, [Address] = ?, [City] = ?, [State] = ?, [ZipCode] = ?, [Phone] = ?, [Email] = ? WHERE [CustomerID] = ?">
+    <asp:SqlDataSource ID="sdsCustomerDetails" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" DeleteCommand="DELETE FROM [Customer] WHERE [CustomerID] = ?" InsertCommand="INSERT INTO [Customer] ([CustomerID], [Name], [Address], [City], [State], [ZipCode], [Phone], [Email]) VALUES (@CustomerID, @Name, @Address, @City, @State, @ZipCode, @Phone, @Email)" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Customer] WHERE ([Name] = ?)" UpdateCommand="UPDATE [Customer] SET [Name] = ?, [Address] = ?, [City] = ?, [State] = ?, [ZipCode] = ?, [Phone] = ?, [Email] = ? WHERE [CustomerID] = ?">
         <DeleteParameters>
             <asp:Parameter Name="CustomerID" Type="Int32" />
         </DeleteParameters>
@@ -164,5 +164,6 @@
             <asp:Parameter Name="StateCode" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <asp:ValidationSummary ID="vsCustomerErrors" runat="server" CssClass="error" HeaderText="Please correct the following errors: " />
 </asp:Content>
 
