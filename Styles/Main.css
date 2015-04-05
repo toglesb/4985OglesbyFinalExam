@@ -16,6 +16,8 @@ h4 {
 .text {
     width: 14em;
     color: #ff5a09;
+    margin-left: 1em;
+    margin-bottom: .5em;
 }
 .error {
     color: red;
@@ -23,8 +25,6 @@ h4 {
 .label {
     font-weight: bold;
     color: #ff9900;
-    
-
     }
 .button {
     background-color: #ff5a09;

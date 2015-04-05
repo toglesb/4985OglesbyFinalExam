@@ -131,8 +131,15 @@ public class Customer
     /// <returns>format in which string is to be displayed after being split</returns>
     private string splitString(string name)
     {
-        var names = name.Split(' ');
+        if (name.Contains(" "))
+        {
+            var names = name.Split(' ');
 
-        return names[1] + ", " + names[0];
+            return names[1] + ", " + names[0];
+        }
+        else
+        {
+            return name;
+        }
     }
 }

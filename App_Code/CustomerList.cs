@@ -114,8 +114,15 @@ public class CustomerList
 
     private string lastNameString(string name)
     {
-        string [] names = name.Split(' ');
+        if (name.Contains(" "))
+        {
+            string[] names = name.Split(' ');
 
-        return names[1];       
+            return names[1];
+        }
+        else
+        {
+            return name;
+        }
     }
 }

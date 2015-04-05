@@ -4,17 +4,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceholder" Runat="Server">
     <br />
-    <asp:GridView ID="gvSoftwareData" runat="server" AutoGenerateColumns="False" DataKeyNames="SoftwareID" DataSourceID="sdsProducts" OnRowDeleted="gvSoftwareData_RowDeleted" OnRowUpdated="gvSoftwareData_RowUpdated">
+    <asp:GridView ID="gvSoftwareData" runat="server" AutoGenerateColumns="False" DataKeyNames="SoftwareID" DataSourceID="sdsProducts" OnRowDeleted="gvSoftwareData_RowDeleted" OnRowUpdated="gvSoftwareData_RowUpdated" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="SoftwareID" HeaderText="SoftwareID" ReadOnly="True" SortExpression="SoftwareID" />
+            <asp:BoundField DataField="SoftwareID" HeaderText="SoftwareID" ReadOnly="True" SortExpression="SoftwareID" >
+            <ItemStyle HorizontalAlign="Left" Width="100px" />
+            </asp:BoundField>
             <asp:TemplateField HeaderText="Name" SortExpression="Name">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtSoftwareName" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvSoftwareName" runat="server" ControlToValidate="txtSoftwareName" CssClass="error" Display="Dynamic" ErrorMessage="Software name is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                    <asp:Label ID="lblName" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle HorizontalAlign="Left" Width="100px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Version" SortExpression="Version">
                 <EditItemTemplate>
@@ -22,8 +26,9 @@
                     <asp:RequiredFieldValidator ID="rfvSoftwareVersion" runat="server" ControlToValidate="txtSoftwareVersion" CssClass="error" Display="Dynamic" ErrorMessage="Software Version is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("Version") %>'></asp:Label>
+                    <asp:Label ID="lblVersion" runat="server" Text='<%# Bind("Version") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle HorizontalAlign="Left" Width="100px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ReleaseDate" SortExpression="ReleaseDate">
                 <EditItemTemplate>
@@ -31,11 +36,21 @@
                     <asp:RequiredFieldValidator ID="rfvSoftwareReleaseDate" runat="server" ControlToValidate="txtReleaseDate" CssClass="error" Display="Dynamic" ErrorMessage="Software release date is required.">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("ReleaseDate") %>'></asp:Label>
+                    <asp:Label ID="lblReleaseDate" runat="server" Text='<%# Bind("ReleaseDate") %>'></asp:Label>
                 </ItemTemplate>
+                <ItemStyle HorizontalAlign="Left" Width="100px" />
             </asp:TemplateField>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
         </Columns>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#ff5a09" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+        <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
     <asp:ValidationSummary ID="vsSoftwareInfo" runat="server" CssClass="error" HeaderText="Please correct the following errors:" />
     <br />
@@ -67,21 +82,25 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     <br />
-    <asp:Label ID="lblSoftwareID" runat="server" Text="Software ID : "></asp:Label>
-    <asp:TextBox ID="txtSoftwareID" runat="server"></asp:TextBox>
+    <asp:Label ID="lblSoftwareID" runat="server" CssClass="label" Text="Software ID : " Width="8em"></asp:Label>
+    <asp:TextBox ID="txtSoftwareID" runat="server" CssClass="text"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvSoftwareIdInsert" runat="server" ControlToValidate="txtSoftwareID" CssClass="error" ErrorMessage="Software ID is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
-    <asp:Label ID="lblSoftwareName" runat="server" Text="Software Name : "></asp:Label>
-    <asp:TextBox ID="txtSoftwareName" runat="server" Height="22px"></asp:TextBox>
+    <br />
+    <asp:Label ID="lblSoftwareName" runat="server" CssClass="label" Text="Software Name : " Width="8em"></asp:Label>
+    <asp:TextBox ID="txtSoftwareName" runat="server" CssClass="text" Height="22px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvSoftwareNameInsert" runat="server" ControlToValidate="txtSoftwareName" CssClass="error" ErrorMessage="Software name is required" ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
-    <asp:Label ID="lblVersion" runat="server" Text="Version : "></asp:Label>
-    <asp:TextBox ID="txtVersion" runat="server"></asp:TextBox>
+    <br />
+    <asp:Label ID="lblVersion" runat="server" CssClass="label" Text="Version : " Width="8em"></asp:Label>
+    <asp:TextBox ID="txtVersion" runat="server" CssClass="text"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvVersionInsert" runat="server" ControlToValidate="txtVersion" CssClass="error" ErrorMessage="Software version is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
-    <asp:Label ID="lblReleaseDate" runat="server" Text="Release Date : "></asp:Label>
-    <asp:TextBox ID="txtReleaseDate" runat="server"></asp:TextBox>
+    <br />
+    <asp:Label ID="lblReleaseDate" runat="server" CssClass="label" Text="Release Date : " Width="8em"></asp:Label>
+    <asp:TextBox ID="txtReleaseDate" runat="server" CssClass="text"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvReleaseDateInsert" runat="server" ControlToValidate="txtReleaseDate" CssClass="error" ErrorMessage="Software release date is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
+    <br />
     <br />
     <br />
     <asp:Button ID="btnAddSoftware" runat="server" OnClick="btnAddSoftware_Click" Text="Add New Software" ValidationGroup="Insert" />
