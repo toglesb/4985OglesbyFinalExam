@@ -55,4 +55,9 @@ footer {
 .radioList {
     color: #ff5a09;
 }
+.textbox {
+        width: 14em;
+    margin-left: 1em;
+    margin-bottom: .5em;
+}
 

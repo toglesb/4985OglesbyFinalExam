@@ -87,22 +87,22 @@
     </asp:SqlDataSource>
     <br />
     <asp:Label ID="lblSoftwareID" runat="server" CssClass="label" Text="Software ID : " Width="8em"></asp:Label>
-    <asp:TextBox ID="txtSoftwareID" runat="server" CssClass="text"></asp:TextBox>
+    <asp:TextBox ID="txtSoftwareID" runat="server" CssClass="textbox"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvSoftwareIdInsert" runat="server" ControlToValidate="txtSoftwareID" CssClass="error" ErrorMessage="Software ID is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <br />
     <asp:Label ID="lblSoftwareName" runat="server" CssClass="label" Text="Software Name : " Width="8em"></asp:Label>
-    <asp:TextBox ID="txtSoftwareName" runat="server" CssClass="text" Height="22px"></asp:TextBox>
+    <asp:TextBox ID="txtSoftwareName" runat="server" CssClass="textbox" Height="22px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvSoftwareNameInsert" runat="server" ControlToValidate="txtSoftwareName" CssClass="error" ErrorMessage="Software name is required" ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <br />
     <asp:Label ID="lblVersion" runat="server" CssClass="label" Text="Version : " Width="8em"></asp:Label>
-    <asp:TextBox ID="txtVersion" runat="server" CssClass="text"></asp:TextBox>
+    <asp:TextBox ID="txtVersion" runat="server" CssClass="textbox"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvVersionInsert" runat="server" ControlToValidate="txtVersion" CssClass="error" ErrorMessage="Software version is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <br />
     <asp:Label ID="lblReleaseDate" runat="server" CssClass="label" Text="Release Date : " Width="8em"></asp:Label>
-    <asp:TextBox ID="txtReleaseDate" runat="server" CssClass="text"></asp:TextBox>
+    <asp:TextBox ID="txtReleaseDate" runat="server" CssClass="textbox"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvReleaseDateInsert" runat="server" ControlToValidate="txtReleaseDate" CssClass="error" ErrorMessage="Software release date is required." ValidationGroup="Insert">*</asp:RequiredFieldValidator>
     <br />
     <br />

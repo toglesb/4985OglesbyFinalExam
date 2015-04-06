@@ -4,7 +4,7 @@
 <link href="Styles/Main.css" rel="stylesheet" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>TJ Oglesby Project 2</title>
+    <title>TJ Oglesby Project 3</title>
     <asp:ContentPlaceHolder id="headPlaceholder" runat="server">
     </asp:ContentPlaceHolder>
 
