@@ -18,7 +18,7 @@
             </asp:BoundField>
             <asp:BoundField DataField="Name" HeaderText="Software Name" SortExpression="Name">
             <HeaderStyle HorizontalAlign="Left" />
-            <ItemStyle HorizontalAlign="Left" Width="160px" />
+            <ItemStyle HorizontalAlign="Left" Width="200px" />
             </asp:BoundField>
             <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName">
             <HeaderStyle HorizontalAlign="Left" />
@@ -33,11 +33,6 @@
             <asp:ControlParameter ControlID="DropDownList1" Name="supportStaffId" PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT Feedback.DateOpened , Software.Name, Customer.Name AS Expr1 FROM ((Customer INNER JOIN Feedback ON Customer.CustomerID = Feedback.CustomerID) INNER JOIN Software ON Feedback.SoftwareID = Software.SoftwareID) WHERE (Feedback.SupportID = ?) AND DateClosed IS NULL ORDER BY Feedback.DateOpened">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="DropDownList1" DefaultValue="14" Name="?" PropertyName="SelectedValue" />
-        </SelectParameters>
-    </asp:SqlDataSource>
     <br />
 </asp:Content>
 

@@ -1,10 +1,9 @@
-﻿using System;
+﻿
 using System.Collections;
-using System.Collections.Generic;
+
 using System.ComponentModel;
 using System.Data.OleDb;
-using System.Linq;
-using System.Web;
+
 
 /// <summary>
 /// Summary description for CustomerDatabase
@@ -12,11 +11,12 @@ using System.Web;
 [DataObject(true)]
 public static class CustomerDatabase
 {
-	static CustomerDatabase()
-	{
 
-	}
 
+    /// <summary>
+    /// Gets the customers with feedback.
+    /// </summary>
+    /// <returns></returns>
     [DataObjectMethod(DataObjectMethodType.Select)]
     public static IEnumerable GetCustomersWithFeedback()
     {

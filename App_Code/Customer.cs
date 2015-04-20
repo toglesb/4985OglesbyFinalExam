@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 /// <summary>
 ///     Summary description for Customer
@@ -31,7 +32,10 @@ public class Customer
         get { return this._customerId; }
         set
         {
-            Trace.Assert(value != null, "Invalid Customer ID");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid Customer ID");
+            }
             this._customerId = value;
         }
     }
@@ -47,7 +51,10 @@ public class Customer
         get { return this._name; }
         set
         {
-            Trace.Assert(value != null, "Invalid name");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid Name");
+            }
             this._name = value;
         }
     }
@@ -63,7 +70,10 @@ public class Customer
         get { return this._address; }
         set
         {
-            Trace.Assert(value != null, "Invalid address");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid Address");
+            }
             this._address = value;
         }
     }
@@ -79,7 +89,10 @@ public class Customer
         get { return this._city; }
         set
         {
-            Trace.Assert(value != null, "Invalid city");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid City");
+            }
             this._city = value;
         }
     }
@@ -95,7 +108,10 @@ public class Customer
         get { return this._state; }
         set
         {
-            Trace.Assert(value != null, "Invalid state");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid State");
+            }
             this._state = value;
         }
     }
@@ -111,7 +127,10 @@ public class Customer
         get { return this._zipcode; }
         set
         {
-            Trace.Assert(value != null, "Invalid zip code");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid Zipcode");
+            }
             this._zipcode = value;
         }
     }
@@ -127,7 +146,10 @@ public class Customer
         get { return this._phone; }
         set
         {
-            Trace.Assert(value != null, "Invalid phone number");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid Phone Number");
+            }
             this._phone = value;
         }
     }
@@ -143,7 +165,10 @@ public class Customer
         get { return this._email; }
         set
         {
-            Trace.Assert(value != null, "Invalid email");
+            if (value == null)
+            {
+                throw new ArgumentException("Invalid Email");
+            }
             this._email = value;
         }
     }

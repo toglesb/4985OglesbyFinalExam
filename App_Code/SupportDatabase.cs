@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.ComponentModel;
 using System.Data.OleDb;
-using System.Linq;
-using System.Web;
+
 
 /// <summary>
 /// Summary description for SupportDatabase
 /// </summary>
 public class SupportDatabase
 {
-	public SupportDatabase()
-	{
 
-	}
+
+    /// <summary>
+    /// Gets all support staff.
+    /// </summary>
+    /// <returns></returns>
     [DataObjectMethod(DataObjectMethodType.Select)]
     public static IEnumerable GetAllSupportStaff()
     {

@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 
 /// <summary>
 /// Summary description for BallgameDatabase
 /// </summary>
 public class BallgameDatabase
 {
-	public BallgameDatabase()
-	{
 
-	}
 
+    /// <summary>
+    /// Gets the connection string.
+    /// </summary>
+    /// <returns></returns>
     public static string GetConnectionString()
     {
         return ConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;

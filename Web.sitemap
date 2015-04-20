@@ -16,7 +16,7 @@
       <siteMapNode title="Maintenance" description="Maintenance">
       <siteMapNode url="CustomerMaintenance.aspx" title="Maintain Customers" description="Maintain Customers" />
       <siteMapNode url="Products.aspx"  title="Maintain Software" description="Maintain Software"/>
-      <siteMapNode url="MaintainSupprt.aspx"  title="Maintain Support" description="Maintain Support"/>
+      <siteMapNode url="MaintainSupport.aspx"  title="Maintain Support" description="Maintain Support"/>
     </siteMapNode>
     
   <siteMapNode title="Feedback" description="Feedback">
