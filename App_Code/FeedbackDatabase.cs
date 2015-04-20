@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.OleDb;
 using System.Linq;
 using System.Web;
@@ -29,5 +30,50 @@ public class FeedbackDatabase
 
         OleDbDataReader reader = cmd.ExecuteReader();
         return reader;
+    }
+
+    public static IEnumerable GetCustomerFeedback(int customerId)
+    {
+        OleDbConnection con = new OleDbConnection(BallgameDatabase.GetConnectionString());
+
+        string select = "SELECT SupportID,SoftwareID,DateOpened,DateClosed,Title,Description FROM Feedback WHERE CustomerID = @customerId ORDER BY SupportID";
+
+        OleDbCommand cmd = new OleDbCommand(select, con);
+        cmd.Parameters.AddWithValue("CustomerID", customerId);
+        con.Open();
+
+        OleDbDataReader reader = cmd.ExecuteReader();
+        return reader;
+    }
+    [DataObjectMethod(DataObjectMethodType.Update)]
+    public static int UpdateFeedback(Feedback originalFeedback, Feedback feedback)
+    {
+        int updateCount = 0;
+
+        string update = "UPDATE Feedback SET DateClosed = @DateClosed, Decription = @Description WHERE SupportID = @original_SupportID";
+
+        using (OleDbConnection con = new OleDbConnection(BallgameDatabase.GetConnectionString()))
+        {
+            using (OleDbCommand cmd = new OleDbCommand(update, con))
+            {
+                if (Convert.ToDateTime(feedback.DateClosed) == Convert.ToDateTime("01/01/0001 12:00:00 AM"))
+                {
+                    cmd.Parameters.AddWithValue("DateClosed", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("DateClosed", feedback.DateClosed);
+                }
+                
+                cmd.Parameters.AddWithValue("Description",feedback.Description);
+                cmd.Parameters.AddWithValue("original_SupportID",originalFeedback.SupportId);
+
+
+                con.Open();
+                updateCount = cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        return updateCount;
     }
 }

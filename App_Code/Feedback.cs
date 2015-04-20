@@ -63,7 +63,7 @@ public class Feedback
     /// </value>
     public string SoftwareId
     {
-        private get { return this._softwareId; }
+        get { return this._softwareId; }
         set
         {
             Trace.Assert(value != null, "Invalid software id");
@@ -123,7 +123,7 @@ public class Feedback
     /// </value>
     public string Title
     {
-        private get { return this._title; }
+        get { return this._title; }
         set
         {
             Trace.Assert(value != null, "Invalid Title");

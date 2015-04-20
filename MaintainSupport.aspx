@@ -3,11 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headPlaceholder" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceholder" Runat="Server">
-    <asp:DropDownList ID="ddlSupportMembers" runat="server" AutoPostBack="True" DataSourceID="sdsSupportNames" DataTextField="Name" DataValueField="SupportID" AppendDataBoundItems="True">
+    <asp:DropDownList ID="ddlSupportMembers" runat="server" AutoPostBack="True" DataSourceID="sdsSupportNames" DataTextField="Name" DataValueField="SupportID">
     </asp:DropDownList>
     <asp:SqlDataSource ID="sdsSupportNames" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT [SupportID], [Name] FROM [Support] ORDER BY [Name]"></asp:SqlDataSource>
     <br />
-    <asp:FormView ID="FormView1" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="SupportID" DataSourceID="sdsSupportDetails" GridLines="Both">
+    <asp:FormView ID="fvSupportDetails" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="SupportID" DataSourceID="sdsSupportDetails" GridLines="Both" OnItemDeleted="fvSupportDetails_ItemDeleted" OnItemInserted="fvSupportDetails_ItemInserted" OnItemUpdated="fvSupportDetails_ItemUpdated">
         <EditItemTemplate>
             SupportID:
             <asp:Label ID="SupportIDLabel1" runat="server" Text='<%# Eval("SupportID") %>' />
@@ -33,19 +33,19 @@
         <InsertItemTemplate>
             SupportID:
             <asp:TextBox ID="txtID" runat="server" Text='<%# Bind("SupportID") %>' />
-            <asp:RequiredFieldValidator ID="rfvSupportID" runat="server" ControlToValidate="txtID" ErrorMessage="Support ID is required.">*</asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvSupportID" runat="server" ControlToValidate="txtID" ErrorMessage="Support ID is required." CssClass="error">*</asp:RequiredFieldValidator>
             <br />
             Name:
             <asp:TextBox ID="txtName" runat="server" Text='<%# Bind("Name") %>' />
-            <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required.">*</asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required." CssClass="error">*</asp:RequiredFieldValidator>
             <br />
             Email:
             <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' />
-            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required.">*</asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required." CssClass="error">*</asp:RequiredFieldValidator>
             <br />
             Phone:
             <asp:TextBox ID="txtPhone" runat="server" Text='<%# Bind("Phone") %>' />
-            <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone" ErrorMessage="Phone number is required.">*</asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone" ErrorMessage="Phone number is required." CssClass="error">*</asp:RequiredFieldValidator>
             <br />
             <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" PostBackUrl="~/MaintainSupport.aspx" />
             &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
@@ -90,6 +90,7 @@
             <asp:Parameter Name="SupportID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
     <asp:ValidationSummary ID="vsErrors" runat="server" CssClass="error" />
     <br />
 </asp:Content>
