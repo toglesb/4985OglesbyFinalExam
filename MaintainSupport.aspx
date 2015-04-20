@@ -5,31 +5,34 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceholder" Runat="Server">
     <asp:DropDownList ID="ddlSupportMembers" runat="server" AutoPostBack="True" DataSourceID="sdsSupportNames" DataTextField="Name" DataValueField="SupportID">
     </asp:DropDownList>
+    <br />
+    <br />
     <asp:SqlDataSource ID="sdsSupportNames" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT [SupportID], [Name] FROM [Support] ORDER BY [Name]"></asp:SqlDataSource>
     <br />
-    <asp:FormView ID="fvSupportDetails" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="SupportID" DataSourceID="sdsSupportDetails" GridLines="Both" OnItemDeleted="fvSupportDetails_ItemDeleted" OnItemInserted="fvSupportDetails_ItemInserted" OnItemUpdated="fvSupportDetails_ItemUpdated">
+    <asp:FormView ID="fvSupportDetails" runat="server" DataKeyNames="SupportID" DataSourceID="sdsSupportDetails" OnItemDeleted="fvSupportDetails_ItemDeleted" OnItemInserted="fvSupportDetails_ItemInserted" OnItemUpdated="fvSupportDetails_ItemUpdated">
         <EditItemTemplate>
             SupportID:
-            <asp:Label ID="SupportIDLabel1" runat="server" Text='<%# Eval("SupportID") %>' />
+            <asp:Label ID="SupportIDLabel1" runat="server" Text='<%# Eval("SupportID") %>' CssClass="label" />
+            <br />
             <br />
             Name:
-            <asp:TextBox ID="txtEditName" runat="server" Text='<%# Bind("Name") %>' />
+            <asp:TextBox ID="txtEditName" runat="server" Text='<%# Bind("Name") %>' CssClass="textbox" />
             <asp:RequiredFieldValidator ID="rfvEditName" runat="server" ControlToValidate="txtEditName" CssClass="error" ErrorMessage="Name is required.">*</asp:RequiredFieldValidator>
             <br />
+            <br />
             Email:
-            <asp:TextBox ID="txtEditEmail" runat="server" Text='<%# Bind("Email") %>' />
+            <asp:TextBox ID="txtEditEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="textbox" />
             <asp:RequiredFieldValidator ID="rfvEditEmail" runat="server" ControlToValidate="txtEditEmail" CssClass="error" ErrorMessage="Email is required.">*</asp:RequiredFieldValidator>
             <br />
+            <br />
             Phone:
-            <asp:TextBox ID="txtEditPhone" runat="server" Text='<%# Bind("Phone") %>' />
+            <asp:TextBox ID="txtEditPhone" runat="server" Text='<%# Bind("Phone") %>' CssClass="textbox" />
             <asp:RequiredFieldValidator ID="rfvEditPhone" runat="server" ControlToValidate="txtEditPhone" CssClass="error" ErrorMessage="Phone number is required.">*</asp:RequiredFieldValidator>
+            <br />
             <br />
             <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
             &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
         </EditItemTemplate>
-        <EditRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
-        <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
-        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
         <InsertItemTemplate>
             SupportID:
             <asp:TextBox ID="txtID" runat="server" Text='<%# Bind("SupportID") %>' />
@@ -52,23 +55,25 @@
         </InsertItemTemplate>
         <ItemTemplate>
             SupportID:
-            <asp:Label ID="SupportIDLabel" runat="server" Text='<%# Eval("SupportID") %>' />
+            <asp:Label ID="SupportIDLabel" runat="server" Text='<%# Eval("SupportID") %>' CssClass="label" />
+            <br />
             <br />
             Name:
-            <asp:Label ID="NameLabel" runat="server" Text='<%# Bind("Name") %>' />
+            <asp:Label ID="NameLabel" runat="server" Text='<%# Bind("Name") %>' CssClass="label" />
+            <br />
             <br />
             Email:
-            <asp:Label ID="EmailLabel" runat="server" Text='<%# Bind("Email") %>' />
+            <asp:Label ID="EmailLabel" runat="server" Text='<%# Bind("Email") %>' CssClass="label" />
+            <br />
             <br />
             Phone:
-            <asp:Label ID="PhoneLabel" runat="server" Text='<%# Bind("Phone") %>' />
+            <asp:Label ID="PhoneLabel" runat="server" Text='<%# Bind("Phone") %>' CssClass="label" />
+            <br />
             <br />
             <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
             &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
             &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
         </ItemTemplate>
-        <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
-        <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
     </asp:FormView>
     <asp:SqlDataSource ID="sdsSupportDetails" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" DeleteCommand="DELETE FROM [Support] WHERE [SupportID] = ?" InsertCommand="INSERT INTO [Support] ([SupportID], [Name], [Email], [Phone]) VALUES (?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:CustomersConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Support] WHERE ([SupportID] = ?)" UpdateCommand="UPDATE [Support] SET [Name] = ?, [Email] = ?, [Phone] = ? WHERE [SupportID] = ?">
         <DeleteParameters>
