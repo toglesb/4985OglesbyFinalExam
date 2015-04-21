@@ -35,7 +35,10 @@ public class Feedback
         get { return this._feedbackId; }
         set
         {
-            Trace.Assert(value != null, "Invalid feedback id");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid feedbackID");
+            }
             this._feedbackId = value;
         }
     }
@@ -51,7 +54,10 @@ public class Feedback
         get { return this._customerId; }
         set
         {
-            Trace.Assert(value != null, "Invalid customer id");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid customerID");
+            }
             this._customerId = value;
         }
     }
@@ -66,7 +72,10 @@ public class Feedback
         get { return this._softwareId; }
         set
         {
-            Trace.Assert(value != null, "Invalid software id");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid softwareID");
+            }
             this._softwareId = value;
         }
     }
@@ -81,7 +90,10 @@ public class Feedback
         get { return this._supportId; }
         set
         {
-            Trace.Assert(value != null, "Invalid support id");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid supportID");
+            }
             this._supportId = value;
         }
     }
@@ -96,7 +108,10 @@ public class Feedback
         get { return this._dateOpened; }
         set
         {
-            Trace.Assert(value != null, "Invalid date opened");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid date opened");
+            }
             this._dateOpened = value;
         }
     }
@@ -111,7 +126,10 @@ public class Feedback
         get { return this._dateClosed; }
         set
         {
-            Trace.Assert(value != null, "Invalid date closed");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid date closed");
+            }
             this._dateClosed = value;
         }
     }
@@ -126,7 +144,10 @@ public class Feedback
         get { return this._title; }
         set
         {
-            Trace.Assert(value != null, "Invalid Title");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid title");
+            }
             this._title = value;
         }
     }
@@ -141,7 +162,10 @@ public class Feedback
         get { return this._description; }
         set
         {
-            Trace.Assert(value != null, "Invalid description");
+            if (value == null)
+            {
+                throw new ArgumentException("invalid description");
+            }
             this._description = value;
         }
     }

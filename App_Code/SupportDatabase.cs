@@ -26,7 +26,7 @@ public class SupportDatabase
     {
         OleDbConnection con = new OleDbConnection(BallgameDatabase.GetConnectionString());
 
-        string select = "SELECT SupportID, Name FROM Support ORDER BY Name";
+        const string select = "SELECT SupportID, Name FROM Support ORDER BY Name";
 
         OleDbCommand cmd = new OleDbCommand(select,con);
 

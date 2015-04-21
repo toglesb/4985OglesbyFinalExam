@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.ComponentModel;
 using System.Data.OleDb;
@@ -26,7 +26,7 @@ public class FeedbackDatabase
     {
         OleDbConnection con = new OleDbConnection(BallgameDatabase.GetConnectionString());
 
-        string select = "SELECT Feedback.DateOpened, Software.Name, Customer.Name AS CustomerName FROM   " +
+         const string select = "SELECT Feedback.DateOpened, Software.Name, Customer.Name AS CustomerName FROM   " +
             "((Customer INNER JOIN Feedback ON Customer.CustomerID = Feedback.CustomerID) INNER JOIN " +
                          "Software ON Feedback.SoftwareID = Software.SoftwareID) WHERE SupportID = @supportStaffId AND DateClosed IS NULL ORDER BY DateOpened";
 
@@ -47,7 +47,7 @@ public class FeedbackDatabase
     {
         OleDbConnection con = new OleDbConnection(BallgameDatabase.GetConnectionString());
 
-        string select = "SELECT * FROM Feedback WHERE CustomerID = @customerId ORDER BY SupportID";
+        const string select = "SELECT * FROM Feedback WHERE CustomerID = @customerId ORDER BY SupportID";
 
         OleDbCommand cmd = new OleDbCommand(select, con);
         cmd.Parameters.AddWithValue("CustomerID", customerId);
@@ -67,9 +67,9 @@ public class FeedbackDatabase
     [DataObjectMethod(DataObjectMethodType.Update)]
     public static int UpdateFeedback(Feedback originalFeedback, Feedback feedback)
     {
-        int updateCount = 0;
+        int updateCount;
 
-        string update =
+        const string update =
             "UPDATE Feedback SET DateClosed = @DateClosed, Description = @Description WHERE DateClosed = @originalDateClosed AND Description =@originalDescription";
 
 
@@ -78,21 +78,19 @@ public class FeedbackDatabase
             using (OleDbCommand updateCommandcmd = new OleDbCommand(update, con))
             {
                 
-                if (Convert.ToDateTime(feedback.DateClosed) == Convert.ToDateTime("01/01/0001 12:00:00 AM"))
-                {
-                    updateCommandcmd.Parameters.AddWithValue("DateClosed", ""); 
-                }
-               else
-                {
+             //   if (Convert.ToDateTime(feedback.DateClosed) == Convert.ToDateTime("01/01/0001 12:00:00 AM"))
+             //   {
+             //       updateCommandcmd.Parameters.AddWithValue("DateClosed", ""); 
+              //  }
+              // else
+               // {
                     updateCommandcmd.Parameters.AddWithValue("DateClosed", feedback.DateClosed);
-               }
+               //}
                 
                 updateCommandcmd.Parameters.AddWithValue("Description",feedback.Description);
-                if ("originalDateClosed" == null)
+                if (originalFeedback.DateClosed == null)
                 {
-                    updateCommandcmd.Parameters.AddWithValue("originalDateClosed", originalFeedback.DateClosed);
-                }
-                else{
+                    originalFeedback.DateClosed = "";
                     updateCommandcmd.Parameters.AddWithValue("originalDateClosed", originalFeedback.DateClosed);
                 }
 

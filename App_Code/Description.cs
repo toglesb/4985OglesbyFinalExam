@@ -2,7 +2,7 @@
 
 
 using System;
-using System.Diagnostics;
+
 
 /// <summary>
 /// Summary description for Description
@@ -56,7 +56,10 @@ public class Description
         get { return this._feedbackId; }
         set
         {
-
+            if (value < 0)
+            {
+                throw new ArgumentException("Not valid FeedbackID");
+            }
             this._feedbackId = value; 
         }
     }
@@ -71,7 +74,10 @@ public class Description
         get { return this._serviceTime; }
         set
         {
-
+            if (value < 0)
+            {
+                throw new ArgumentException("Not valid Service Time");
+            }
             this._serviceTime = value; 
         }
     }
@@ -86,7 +92,10 @@ public class Description
         get { return this._efficiency; }
         set
         {
-
+            if (value < 0)
+            {
+                throw new ArgumentException("Not valid Efficiency");
+            }
             this._efficiency = value; 
         }
     }
@@ -101,7 +110,10 @@ public class Description
         get { return this._resolution; }
         set
         {
-
+            if (value < 0)
+            {
+                throw new ArgumentException("Not valid Resolution");
+            }
             this._resolution = value; 
         }
     }
@@ -116,7 +128,10 @@ public class Description
         get { return this._comments; }
         set
         {
-            Trace.Assert(value != null, "Invalid comments");
+            if (value == null)
+            {
+                throw new ArgumentException("Not valid comments");
+            }
             this._comments = value; 
         }
     }
@@ -131,7 +146,10 @@ public class Description
         get { return this._contact; }
         set
         {
-
+            if (value.Equals(null))
+            {
+                throw new ArgumentException("Invalid contact");
+            }
             this._contact = value; 
         }
     }
@@ -146,7 +164,10 @@ public class Description
         get { return this._contactMethod; }
         set
         {
-            Trace.Assert(value != null, "Invalid contact method");
+            if (value == null)
+            {
+                throw new ArgumentException("Not valid contact method");
+            }
             this._contactMethod = value; 
         }
     }

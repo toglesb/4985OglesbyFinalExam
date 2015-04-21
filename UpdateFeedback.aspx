@@ -49,7 +49,7 @@
         <HeaderStyle BackColor="#FF5A09" ForeColor="White" />
         <RowStyle BackColor="#FFFBD6" />
     </asp:GridView>
-    <asp:ObjectDataSource ID="odsFeedback" runat="server" ConflictDetection="CompareAllValues" DataObjectTypeName="Feedback" SelectMethod="GetCustomerFeedback" TypeName="FeedbackDatabase" UpdateMethod="UpdateFeedback" OldValuesParameterFormatString="original{0}">
+    <asp:ObjectDataSource ID="odsFeedback" runat="server" ConflictDetection="CompareAllValues" DataObjectTypeName="Feedback" SelectMethod="GetCustomerFeedback" TypeName="FeedbackDatabase" UpdateMethod="UpdateFeedback" OldValuesParameterFormatString="original{0}" ConvertNullToDBNull="True">
         <SelectParameters>
             <asp:ControlParameter ControlID="DropDownList1" Name="customerId" PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>

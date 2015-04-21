@@ -28,7 +28,7 @@ public static class CustomerDatabase
     {
         OleDbConnection con = new OleDbConnection(BallgameDatabase.GetConnectionString());
 
-        string select = "SELECT CustomerID, Name FROM Customer WHERE CustomerID IN(SELECT DISTINCT CustomerID FROM Feedback WHERE SupportID IS NOT NULL)ORDER By Name ";
+        const string select = "SELECT CustomerID, Name FROM Customer WHERE CustomerID IN(SELECT DISTINCT CustomerID FROM Feedback WHERE SupportID IS NOT NULL)ORDER By Name ";
 
         OleDbCommand cmd = new OleDbCommand(select, con);
 
