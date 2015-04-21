@@ -8,6 +8,12 @@ using System.Data.OleDb;
 /// <summary>
 /// Summary description for CustomerDatabase
 /// </summary>
+/// <author>
+///     TJ Oglesby
+/// </author>
+/// <version>
+///     3/4/15
+/// </version>
 [DataObject(true)]
 public static class CustomerDatabase
 {

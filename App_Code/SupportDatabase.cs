@@ -6,6 +6,13 @@ using System.Data.OleDb;
 /// <summary>
 /// Summary description for SupportDatabase
 /// </summary>
+/// <author>
+///     TJ Oglesby
+/// </author>
+/// <version>
+///     3/4/15
+/// </version>
+[DataObject(true)]
 public class SupportDatabase
 {
 
@@ -13,7 +20,7 @@ public class SupportDatabase
     /// <summary>
     /// Gets all support staff.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>IEnumerable of all support staff</returns>
     [DataObjectMethod(DataObjectMethodType.Select)]
     public static IEnumerable GetAllSupportStaff()
     {

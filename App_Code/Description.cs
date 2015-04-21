@@ -1,6 +1,7 @@
 ﻿
 
 
+using System;
 using System.Diagnostics;
 
 /// <summary>
@@ -36,7 +37,10 @@ public class Description
         get { return this._customerId; }
         set
         {
-
+            if (value < 0)
+            {
+                throw new ArgumentException("Not valid CustomerID");
+            }
             this._customerId = value;
         }
     }

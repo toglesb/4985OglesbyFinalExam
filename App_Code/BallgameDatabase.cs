@@ -3,6 +3,12 @@
 /// <summary>
 /// Summary description for BallgameDatabase
 /// </summary>
+/// <author>
+///  TJ Oglesby
+/// </author>
+/// <version>
+///     3/4/15
+/// </version>
 public class BallgameDatabase
 {
 

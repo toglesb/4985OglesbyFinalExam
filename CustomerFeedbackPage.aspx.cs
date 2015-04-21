@@ -71,7 +71,7 @@ public partial class CustomerFeedbackPage : Page
 
         for (var i = 0; i < this._fb.Count; i++)
         {
-            if (this._fb[i].DateClosed != "")
+            if (this._fb[i].DateClosed != null)
             {
                 this.lbFeedback.Items.Add(this._fb[i].FormatFeedback());
                 this.lbFeedback.Items[i].Value = this._fb[i].FeedbackId;
