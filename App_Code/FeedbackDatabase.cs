@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Data.OleDb;
@@ -10,7 +11,7 @@ using System.Data.OleDb;
 ///     TJ Oglesby
 /// </author>
 /// <version>
-///     3/4/15
+///    4/20/2015
 /// </version>
 [DataObject(true)]
 public class FeedbackDatabase
@@ -77,21 +78,27 @@ public class FeedbackDatabase
         {
             using (OleDbCommand updateCommandcmd = new OleDbCommand(update, con))
             {
-                
-             //   if (Convert.ToDateTime(feedback.DateClosed) == Convert.ToDateTime("01/01/0001 12:00:00 AM"))
-             //   {
-             //       updateCommandcmd.Parameters.AddWithValue("DateClosed", ""); 
-              //  }
-              // else
-               // {
-                    updateCommandcmd.Parameters.AddWithValue("DateClosed", feedback.DateClosed);
-               //}
-                
-                updateCommandcmd.Parameters.AddWithValue("Description",feedback.Description);
+
+                if (Convert.ToDateTime(feedback.DateClosed) == Convert.ToDateTime("01/01/0001 12:00:00 AM"))
+                {
+                    updateCommandcmd.Parameters.AddWithValue("DateClosed", DBNull.Value);
+                }
+                else
+                {
+
+                    updateCommandcmd.Parameters.AddWithValue("DateClosed", Convert.ToDateTime(feedback.DateClosed));
+            }
+
+            updateCommandcmd.Parameters.AddWithValue("Description",feedback.Description);
                 if (originalFeedback.DateClosed == null)
                 {
-                    originalFeedback.DateClosed = "";
-                    updateCommandcmd.Parameters.AddWithValue("originalDateClosed", originalFeedback.DateClosed);
+                    originalFeedback.DateClosed = "01/01/0001 12:00:00 AM";
+
+                    updateCommandcmd.Parameters.AddWithValue("originalDateClosed", Convert.ToDateTime(originalFeedback.DateClosed));
+                }
+                else
+                {
+                    updateCommandcmd.Parameters.AddWithValue("originalDateClosed", Convert.ToDateTime(originalFeedback.DateClosed));
                 }
 
                 updateCommandcmd.Parameters.AddWithValue("originalDescription", originalFeedback.Description);

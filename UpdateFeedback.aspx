@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headPlaceholder" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceholder" Runat="Server">
+    <br />
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="odsCustomers" DataTextField="Name" DataValueField="CustomerID">
     </asp:DropDownList>
     <asp:ObjectDataSource ID="odsCustomers" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomersWithFeedback" TypeName="CustomerDatabase"></asp:ObjectDataSource>
@@ -24,7 +25,6 @@
             <asp:TemplateField HeaderText="Date Closed" SortExpression="DateClosed">
                 <EditItemTemplate>
                     <asp:TextBox ID="txtDateClosed" runat="server" Text='<%# Bind("DateClosed") %>'></asp:TextBox>
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtDateClosed" CssClass="error" ErrorMessage="Please enter a valid date." Operator="DataTypeCheck" Type="Date">*</asp:CompareValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="lblDateClosed" runat="server" Text='<%# Bind("DateClosed") %>'></asp:Label>

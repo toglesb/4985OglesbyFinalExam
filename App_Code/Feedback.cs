@@ -9,7 +9,7 @@ using System.Diagnostics;
 /// TJ Oglesby
 /// </author>
 /// <version>
-/// 3/4/15
+/// 4/20/2015
 /// </version>
 public class Feedback
 {
@@ -128,7 +128,7 @@ public class Feedback
         {
             if (value == null)
             {
-                throw new ArgumentException("invalid date closed");
+               this._dateClosed = "";
             }
             this._dateClosed = value;
         }

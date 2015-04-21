@@ -7,7 +7,7 @@
 ///  TJ Oglesby
 /// </author>
 /// <version>
-///     3/4/15
+///    4/20/2015
 /// </version>
 public class BallgameDatabase
 {
@@ -16,7 +16,7 @@ public class BallgameDatabase
     /// <summary>
     /// Gets the connection string.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>string to connect to database</returns>
     public static string GetConnectionString()
     {
         return ConfigurationManager.ConnectionStrings["CustomersConnectionString"].ConnectionString;

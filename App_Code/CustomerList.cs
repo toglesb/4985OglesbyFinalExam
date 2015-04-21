@@ -11,7 +11,7 @@ using System.Web;
 /// TJ Oglesby
 /// </author>
 /// <version>
-/// 3/4/15
+/// 4/20/2015
 /// </version>
 public class CustomerList
 {
@@ -106,12 +106,20 @@ public class CustomerList
         return (CustomerList) HttpContext.Current.Session["CustomerList"];
     }
 
+    /// <summary>
+    /// Sorts the list.
+    /// </summary>
     private void SortList()
     {
         var sortedList = this._customerList.OrderBy(cust => this.LastNameString(cust.Name)).ToList();
         this._customerList = sortedList;
     }
 
+    /// <summary>
+    /// Lasts the name string.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <returns>string of last name</returns>
     private string LastNameString(string name)
     {
         if (name.Contains(" "))

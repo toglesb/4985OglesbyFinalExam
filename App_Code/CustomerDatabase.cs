@@ -12,7 +12,7 @@ using System.Data.OleDb;
 ///     TJ Oglesby
 /// </author>
 /// <version>
-///     3/4/15
+///    4/20/2015
 /// </version>
 [DataObject(true)]
 public static class CustomerDatabase
@@ -22,7 +22,7 @@ public static class CustomerDatabase
     /// <summary>
     /// Gets the customers with feedback.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>IEnumerable object with customers with feedback data</returns>
     [DataObjectMethod(DataObjectMethodType.Select)]
     public static IEnumerable GetCustomersWithFeedback()
     {

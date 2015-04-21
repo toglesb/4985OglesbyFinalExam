@@ -11,7 +11,7 @@ using System;
 /// TJ Oglesby
 /// </author>
 /// <version>
-/// 3/4/15
+/// 4/20/2015
 /// </version>
 public class Description
 {
